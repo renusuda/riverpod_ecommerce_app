@@ -1,8 +1,8 @@
-import 'package:ecommerce_app/src/features/products/presentation/pages/product_detail_page.dart';
 import 'package:ecommerce_app/src/features/products/presentation/providers/products_provider.dart';
 import 'package:ecommerce_app/src/features/products/presentation/widgets/product_card.dart';
 import 'package:ecommerce_app/src/theme/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ProductListPage extends ConsumerWidget {
@@ -30,12 +30,7 @@ class ProductListPage extends ConsumerWidget {
         itemBuilder: (context, index) {
           return ProductCard(
             product: products[index],
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (_) => ProductDetailPage(productId: products[index].id),
-              ),
-            ),
+            onTap: () => context.go('/products/${products[index].id}'),
           );
         },
       ),
