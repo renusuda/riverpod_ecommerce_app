@@ -1,15 +1,14 @@
-class Product {
-  const Product({
-    required this.id,
-    required this.name,
-    required this.imageUrl,
-    required this.price,
-    required this.stockQuantity,
-  });
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  final String id;
-  final String name;
-  final String imageUrl;
-  final double price;
-  final int stockQuantity;
+part 'product.freezed.dart';
+
+@freezed
+sealed class Product with _$Product {
+  const factory Product({
+    required String id,
+    required String name,
+    required String imageUrl,
+    required double price,
+    required int stockQuantity,
+  }) = _Product;
 }
