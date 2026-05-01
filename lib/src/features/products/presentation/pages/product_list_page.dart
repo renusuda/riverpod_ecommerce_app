@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/src/features/products/presentation/pages/product_detail_page.dart';
 import 'package:ecommerce_app/src/features/products/presentation/providers/products_provider.dart';
 import 'package:ecommerce_app/src/features/products/presentation/widgets/product_card.dart';
 import 'package:ecommerce_app/src/theme/app_theme.dart';
@@ -27,7 +28,15 @@ class ProductListPage extends ConsumerWidget {
         itemCount: products.length,
         separatorBuilder: (_, _) => SizedBox(height: spacing.p32),
         itemBuilder: (context, index) {
-          return ProductCard(product: products[index]);
+          return ProductCard(
+            product: products[index],
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => ProductDetailPage(product: products[index]),
+              ),
+            ),
+          );
         },
       ),
     );
