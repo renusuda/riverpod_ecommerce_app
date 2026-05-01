@@ -1,10 +1,9 @@
-import 'package:ecommerce_app/src/features/products/domain/product.dart';
 import 'package:flutter/material.dart';
 
 class ProductDetailPage extends StatelessWidget {
-  const ProductDetailPage({super.key, required this.product});
+  const ProductDetailPage({super.key, required this.productId});
 
-  final Product product;
+  final String productId;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +16,7 @@ class ProductDetailPage extends StatelessWidget {
       ),
       body: Center(
         child: Text(
-          product.name,
+          productId,
           style: Theme.of(context).textTheme.headlineMedium,
         ),
       ),

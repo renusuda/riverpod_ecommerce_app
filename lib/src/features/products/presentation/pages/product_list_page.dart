@@ -33,7 +33,7 @@ class ProductListPage extends ConsumerWidget {
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (_) => ProductDetailPage(product: products[index]),
+                builder: (_) => ProductDetailPage(productId: products[index].id),
               ),
             ),
           );
