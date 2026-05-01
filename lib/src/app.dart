@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/src/features/products/pages/product_list_page.dart';
+import 'package:ecommerce_app/src/features/products/presentation/pages/product_list_page.dart';
 import 'package:ecommerce_app/src/theme/app_spacing.dart';
 import 'package:flutter/material.dart';
 

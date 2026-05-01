@@ -1,5 +1,5 @@
 import 'package:ecommerce_app/src/features/products/domain/product.dart';
-import 'package:ecommerce_app/src/features/products/providers/products_provider.dart';
+import 'package:ecommerce_app/src/features/products/presentation/providers/products_provider.dart';
 import 'package:ecommerce_app/src/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
