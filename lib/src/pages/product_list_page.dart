@@ -1,13 +1,15 @@
-import 'package:ecommerce_app/src/constants/test_products.dart';
 import 'package:ecommerce_app/src/domain/product.dart';
+import 'package:ecommerce_app/src/providers/products_provider.dart';
 import 'package:ecommerce_app/src/theme/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class ProductListPage extends StatelessWidget {
+class ProductListPage extends ConsumerWidget {
   const ProductListPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final products = ref.watch(productsProvider);
     final spacing = context.spacing;
 
     return Scaffold(
@@ -22,10 +24,10 @@ class ProductListPage extends StatelessWidget {
           vertical: spacing.p48,
           horizontal: spacing.p24,
         ),
-        itemCount: kTestProducts.length,
+        itemCount: products.length,
         separatorBuilder: (_, _) => SizedBox(height: spacing.p32),
         itemBuilder: (context, index) {
-          return ProductCard(product: kTestProducts[index]);
+          return ProductCard(product: products[index]);
         },
       ),
     );
