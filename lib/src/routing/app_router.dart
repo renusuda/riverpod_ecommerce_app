@@ -7,7 +7,7 @@ part 'app_router.g.dart';
 
 enum AppRoute { home, product }
 
-@riverpod
+@Riverpod(keepAlive: true)
 GoRouter goRouter(Ref ref) {
   return GoRouter(
     routes: [
