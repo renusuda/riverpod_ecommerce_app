@@ -9,6 +9,54 @@ part of 'products_provider.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
 
+@ProviderFor(productsRepository)
+final productsRepositoryProvider = ProductsRepositoryProvider._();
+
+final class ProductsRepositoryProvider
+    extends
+        $FunctionalProvider<
+          ProductsRepository,
+          ProductsRepository,
+          ProductsRepository
+        >
+    with $Provider<ProductsRepository> {
+  ProductsRepositoryProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'productsRepositoryProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$productsRepositoryHash();
+
+  @$internal
+  @override
+  $ProviderElement<ProductsRepository> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
+
+  @override
+  ProductsRepository create(Ref ref) {
+    return productsRepository(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(ProductsRepository value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<ProductsRepository>(value),
+    );
+  }
+}
+
+String _$productsRepositoryHash() =>
+    r'3604f90c41ec77af4c045b9997adc0a2fea0d1cf';
+
 @ProviderFor(products)
 final productsProvider = ProductsProvider._();
 
@@ -48,4 +96,4 @@ final class ProductsProvider
   }
 }
 
-String _$productsHash() => r'7fcf4dd992d55c328cc39e157c2de97f1314e39b';
+String _$productsHash() => r'ef7ec186f6ae9bf693bd495831e2d04b4daaf49a';
