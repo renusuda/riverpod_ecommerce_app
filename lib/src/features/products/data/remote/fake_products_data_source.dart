@@ -1,6 +1,6 @@
 import 'package:ecommerce_app/src/constants/test_products.dart';
-import 'package:ecommerce_app/src/data/remote/products_data_source.dart';
-import 'package:ecommerce_app/src/domain/product.dart';
+import 'package:ecommerce_app/src/features/products/data/remote/products_data_source.dart';
+import 'package:ecommerce_app/src/features/products/domain/product.dart';
 
 class FakeProductsDataSource implements ProductsDataSource {
   @override

@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/src/domain/product.dart';
+import 'package:ecommerce_app/src/features/products/domain/product.dart';
 
 const kTestProducts = [
   Product(
