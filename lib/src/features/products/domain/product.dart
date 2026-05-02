@@ -11,5 +11,6 @@ sealed class Product with _$Product {
     required double price,
     required int stockQuantity,
     @Default(0) int reviewCount,
+    @Default(0.0) double averageRating,
   }) = _Product;
 }
