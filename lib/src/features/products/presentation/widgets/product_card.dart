@@ -44,7 +44,7 @@ class ProductCard extends StatelessWidget {
               ),
               SizedBox(height: spacing.p24),
               Text(
-                '\$${product.price.toStringAsFixed(2)}',
+                '¥${product.price}',
                 style: Theme.of(context).textTheme.titleLarge,
               ),
               SizedBox(height: spacing.p12),

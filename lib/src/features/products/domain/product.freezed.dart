@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Product {
 
- String get id; String get name; String get imageUrl; double get price; int get stockQuantity; int get reviewCount; double get averageRating;
+ String get id; String get name; String get imageUrl; int get price; int get stockQuantity; int get reviewCount; double get averageRating;
 /// Create a copy of Product
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -45,7 +45,7 @@ abstract mixin class $ProductCopyWith<$Res>  {
   factory $ProductCopyWith(Product value, $Res Function(Product) _then) = _$ProductCopyWithImpl;
 @useResult
 $Res call({
- String id, String name, String imageUrl, double price, int stockQuantity, int reviewCount, double averageRating
+ String id, String name, String imageUrl, int price, int stockQuantity, int reviewCount, double averageRating
 });
 
 
@@ -68,7 +68,7 @@ id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,imageUrl: null == imageUrl ? _self.imageUrl : imageUrl // ignore: cast_nullable_to_non_nullable
 as String,price: null == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
-as double,stockQuantity: null == stockQuantity ? _self.stockQuantity : stockQuantity // ignore: cast_nullable_to_non_nullable
+as int,stockQuantity: null == stockQuantity ? _self.stockQuantity : stockQuantity // ignore: cast_nullable_to_non_nullable
 as int,reviewCount: null == reviewCount ? _self.reviewCount : reviewCount // ignore: cast_nullable_to_non_nullable
 as int,averageRating: null == averageRating ? _self.averageRating : averageRating // ignore: cast_nullable_to_non_nullable
 as double,
@@ -153,7 +153,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  String imageUrl,  double price,  int stockQuantity,  int reviewCount,  double averageRating)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  String imageUrl,  int price,  int stockQuantity,  int reviewCount,  double averageRating)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Product() when $default != null:
 return $default(_that.id,_that.name,_that.imageUrl,_that.price,_that.stockQuantity,_that.reviewCount,_that.averageRating);case _:
@@ -174,7 +174,7 @@ return $default(_that.id,_that.name,_that.imageUrl,_that.price,_that.stockQuanti
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  String imageUrl,  double price,  int stockQuantity,  int reviewCount,  double averageRating)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  String imageUrl,  int price,  int stockQuantity,  int reviewCount,  double averageRating)  $default,) {final _that = this;
 switch (_that) {
 case _Product():
 return $default(_that.id,_that.name,_that.imageUrl,_that.price,_that.stockQuantity,_that.reviewCount,_that.averageRating);}
@@ -191,7 +191,7 @@ return $default(_that.id,_that.name,_that.imageUrl,_that.price,_that.stockQuanti
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  String imageUrl,  double price,  int stockQuantity,  int reviewCount,  double averageRating)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  String imageUrl,  int price,  int stockQuantity,  int reviewCount,  double averageRating)?  $default,) {final _that = this;
 switch (_that) {
 case _Product() when $default != null:
 return $default(_that.id,_that.name,_that.imageUrl,_that.price,_that.stockQuantity,_that.reviewCount,_that.averageRating);case _:
@@ -212,7 +212,7 @@ class _Product implements Product {
 @override final  String id;
 @override final  String name;
 @override final  String imageUrl;
-@override final  double price;
+@override final  int price;
 @override final  int stockQuantity;
 @override@JsonKey() final  int reviewCount;
 @override@JsonKey() final  double averageRating;
@@ -247,7 +247,7 @@ abstract mixin class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
   factory _$ProductCopyWith(_Product value, $Res Function(_Product) _then) = __$ProductCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String name, String imageUrl, double price, int stockQuantity, int reviewCount, double averageRating
+ String id, String name, String imageUrl, int price, int stockQuantity, int reviewCount, double averageRating
 });
 
 
@@ -270,7 +270,7 @@ id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,imageUrl: null == imageUrl ? _self.imageUrl : imageUrl // ignore: cast_nullable_to_non_nullable
 as String,price: null == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
-as double,stockQuantity: null == stockQuantity ? _self.stockQuantity : stockQuantity // ignore: cast_nullable_to_non_nullable
+as int,stockQuantity: null == stockQuantity ? _self.stockQuantity : stockQuantity // ignore: cast_nullable_to_non_nullable
 as int,reviewCount: null == reviewCount ? _self.reviewCount : reviewCount // ignore: cast_nullable_to_non_nullable
 as int,averageRating: null == averageRating ? _self.averageRating : averageRating // ignore: cast_nullable_to_non_nullable
 as double,

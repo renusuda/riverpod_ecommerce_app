@@ -8,7 +8,7 @@ sealed class Product with _$Product {
     required String id,
     required String name,
     required String imageUrl,
-    required double price,
+    required int price,
     required int stockQuantity,
     @Default(0) int reviewCount,
     @Default(0.0) double averageRating,
