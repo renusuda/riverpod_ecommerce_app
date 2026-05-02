@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/src/common_widgets/app_card.dart';
 import 'package:ecommerce_app/src/extensions/int_extensions.dart';
 import 'package:ecommerce_app/src/features/products/domain/product.dart';
 import 'package:ecommerce_app/src/features/products/presentation/widgets/product_image.dart';
@@ -18,14 +19,7 @@ class ProductCard extends StatelessWidget {
     return InkWell(
       borderRadius: BorderRadius.circular(22),
       onTap: onTap,
-      child: Card(
-        color: const Color(0xFFFBF6FE),
-        elevation: 1,
-        shadowColor: const Color(0x26000000),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(22),
-          side: const BorderSide(color: Color(0xFFF0EAF3)),
-        ),
+      child: AppCard(
         child: Padding(
           padding: EdgeInsets.all(spacing.p24),
           child: Column(

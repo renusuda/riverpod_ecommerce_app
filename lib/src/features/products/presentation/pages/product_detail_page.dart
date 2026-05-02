@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/src/common_widgets/app_card.dart';
 import 'package:ecommerce_app/src/common_widgets/async_value_widget.dart';
 import 'package:ecommerce_app/src/extensions/int_extensions.dart';
 import 'package:ecommerce_app/src/features/products/domain/product.dart';
@@ -47,25 +48,14 @@ class _ProductDetailView extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Card(
-            color: const Color(0xFFFBF6FE),
-            elevation: 1,
-            shadowColor: const Color(0x26000000),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(22),
-              side: const BorderSide(color: Color(0xFFF0EAF3)),
-            ),
+          AppCard(
             child: Padding(
               padding: EdgeInsets.all(spacing.p24),
               child: ProductImage(product: product),
             ),
           ),
           SizedBox(height: spacing.p16),
-          Card(
-            color: const Color(0xFFFBF6FE),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16),
-            ),
+          AppCard(
             child: Padding(
               padding: EdgeInsets.all(spacing.p16),
               child: Column(
