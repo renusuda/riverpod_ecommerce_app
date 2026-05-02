@@ -6,8 +6,10 @@ import 'package:ecommerce_app/src/features/products/domain/product.dart';
 import 'package:ecommerce_app/src/features/products/presentation/providers/products_provider.dart';
 import 'package:ecommerce_app/src/features/products/presentation/widgets/product_image.dart';
 import 'package:ecommerce_app/src/features/products/presentation/widgets/product_rating_bar.dart';
+import 'package:ecommerce_app/src/features/products/presentation/widgets/quantity_stepper.dart';
 import 'package:ecommerce_app/src/theme/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ProductDetailPage extends ConsumerWidget {
@@ -34,13 +36,14 @@ class ProductDetailPage extends ConsumerWidget {
   }
 }
 
-class _ProductDetailView extends StatelessWidget {
+class _ProductDetailView extends HookWidget {
   const _ProductDetailView({required this.product});
 
   final Product product;
 
   @override
   Widget build(BuildContext context) {
+    final quantity = useState(1);
     final spacing = context.spacing;
     final textTheme = Theme.of(context).textTheme;
 
@@ -67,6 +70,18 @@ class _ProductDetailView extends StatelessWidget {
                 Text(
                   '¥${product.price.commaSeparated}',
                   style: textTheme.headlineMedium,
+                ),
+                const Divider(height: 32),
+                Row(
+                  children: [
+                    Text('数量:', style: textTheme.bodyLarge),
+                    const Spacer(),
+                    QuantityStepper(
+                      quantity: quantity.value,
+                      onIncrement: () => quantity.value++,
+                      onDecrement: () => quantity.value--,
+                    ),
+                  ],
                 ),
                 const Divider(height: 32),
                 PrimaryButton(label: 'カートに追加', onPressed: () {}),
