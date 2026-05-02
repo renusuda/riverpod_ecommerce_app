@@ -16,8 +16,6 @@ const kTestProducts = [
     imageUrl: 'assets/products/mozzarella-plate.jpg',
     price: 13,
     stockQuantity: 5,
-    reviewCount: 74,
-    averageRating: 4.2,
   ),
   Product(
     id: '3',
