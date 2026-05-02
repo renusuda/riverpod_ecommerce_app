@@ -7,7 +7,7 @@ class ProductsRepository {
 
   final ProductsDataSource _remoteDataSource;
 
-  List<Product> fetchProducts() {
+  Future<List<Product>> fetchProducts() {
     return _remoteDataSource.fetchProducts();
   }
 }

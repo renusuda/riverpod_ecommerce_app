@@ -6,6 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 void main() {
   testWidgets('shows products from test data', (tester) async {
     await tester.pumpWidget(const ProviderScope(child: App()));
+    await tester.pumpAndSettle();
 
     expect(find.text('Bruschetta plate'), findsOneWidget);
     expect(find.text('\$15.00'), findsOneWidget);
@@ -14,6 +15,7 @@ void main() {
 
   testWidgets('製品カードをタップすると詳細画面に遷移する', (tester) async {
     await tester.pumpWidget(const ProviderScope(child: App()));
+    await tester.pumpAndSettle();
 
     await tester.tap(find.text('Bruschetta plate'));
     await tester.pumpAndSettle();

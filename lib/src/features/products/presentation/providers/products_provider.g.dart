@@ -109,8 +109,13 @@ String _$productsRepositoryHash() =>
 final productsProvider = ProductsProvider._();
 
 final class ProductsProvider
-    extends $FunctionalProvider<List<Product>, List<Product>, List<Product>>
-    with $Provider<List<Product>> {
+    extends
+        $FunctionalProvider<
+          AsyncValue<List<Product>>,
+          List<Product>,
+          FutureOr<List<Product>>
+        >
+    with $FutureModifier<List<Product>>, $FutureProvider<List<Product>> {
   ProductsProvider._()
     : super(
         from: null,
@@ -127,21 +132,14 @@ final class ProductsProvider
 
   @$internal
   @override
-  $ProviderElement<List<Product>> $createElement($ProviderPointer pointer) =>
-      $ProviderElement(pointer);
+  $FutureProviderElement<List<Product>> $createElement(
+    $ProviderPointer pointer,
+  ) => $FutureProviderElement(pointer);
 
   @override
-  List<Product> create(Ref ref) {
+  FutureOr<List<Product>> create(Ref ref) {
     return products(ref);
-  }
-
-  /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(List<Product> value) {
-    return $ProviderOverride(
-      origin: this,
-      providerOverride: $SyncValueProvider<List<Product>>(value),
-    );
   }
 }
 
-String _$productsHash() => r'857633e1c102e5a0d69ebf319dec13753fac723b';
+String _$productsHash() => r'4ee97270b9f2a509ee1d3fbab0d3fc7e5514a6f1';

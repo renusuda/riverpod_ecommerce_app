@@ -18,7 +18,7 @@ ProductsRepository productsRepository(Ref ref) {
 }
 
 @riverpod
-List<Product> products(Ref ref) {
+Future<List<Product>> products(Ref ref) {
   final repository = ref.watch(productsRepositoryProvider);
   return repository.fetchProducts();
 }

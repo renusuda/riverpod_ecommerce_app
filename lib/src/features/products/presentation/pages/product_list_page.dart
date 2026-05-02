@@ -11,7 +11,7 @@ class ProductListPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final products = ref.watch(productsProvider);
+    final productsAsyncValue = ref.watch(productsProvider);
     final spacing = context.spacing;
 
     return Scaffold(
@@ -21,23 +21,29 @@ class ProductListPage extends ConsumerWidget {
         title: const Text('My Shop'),
         centerTitle: false,
       ),
-      body: ListView.separated(
-        padding: EdgeInsets.symmetric(
-          vertical: spacing.p48,
-          horizontal: spacing.p24,
+      body: switch (productsAsyncValue) {
+        AsyncValue(:final value?) => ListView.separated(
+          padding: EdgeInsets.symmetric(
+            vertical: spacing.p48,
+            horizontal: spacing.p24,
+          ),
+          itemCount: value.length,
+          separatorBuilder: (_, _) => SizedBox(height: spacing.p32),
+          itemBuilder: (context, index) {
+            return ProductCard(
+              product: value[index],
+              onTap: () => context.goNamed(
+                AppRoute.product.name,
+                pathParameters: {'id': value[index].id},
+              ),
+            );
+          },
         ),
-        itemCount: products.length,
-        separatorBuilder: (_, _) => SizedBox(height: spacing.p32),
-        itemBuilder: (context, index) {
-          return ProductCard(
-            product: products[index],
-            onTap: () => context.goNamed(
-              AppRoute.product.name,
-              pathParameters: {'id': products[index].id},
-            ),
-          );
-        },
-      ),
+        AsyncValue(error: != null) => Center(
+          child: Text('${productsAsyncValue.error}'),
+        ),
+        AsyncValue() => const Center(child: CircularProgressIndicator()),
+      },
     );
   }
 }

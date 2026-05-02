@@ -4,7 +4,7 @@ import 'package:ecommerce_app/src/features/products/domain/product.dart';
 
 class FakeProductsDataSource implements ProductsDataSource {
   @override
-  List<Product> fetchProducts() {
+  Future<List<Product>> fetchProducts() async {
     return kTestProducts;
   }
 }
