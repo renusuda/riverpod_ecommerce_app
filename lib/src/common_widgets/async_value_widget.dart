@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/src/common_widgets/error_message.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -16,7 +17,9 @@ class AsyncValueWidget<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     return switch (asyncValue) {
       AsyncValue(:final value?) => data(value),
-      AsyncValue(error: != null) => Center(child: Text('${asyncValue.error}')),
+      AsyncValue(error: != null) => ErrorMessage(
+        errorMessage: '${asyncValue.error}',
+      ),
       AsyncValue() => const Center(child: CircularProgressIndicator()),
     };
   }
