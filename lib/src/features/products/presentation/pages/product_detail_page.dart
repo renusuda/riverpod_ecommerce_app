@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/src/common_widgets/app_card.dart';
 import 'package:ecommerce_app/src/common_widgets/async_value_widget.dart';
+import 'package:ecommerce_app/src/common_widgets/primary_button.dart';
 import 'package:ecommerce_app/src/extensions/int_extensions.dart';
 import 'package:ecommerce_app/src/features/products/domain/product.dart';
 import 'package:ecommerce_app/src/features/products/presentation/providers/products_provider.dart';
@@ -68,27 +69,7 @@ class _ProductDetailView extends StatelessWidget {
                   style: textTheme.headlineMedium,
                 ),
                 const Divider(height: 32),
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
-                      foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(32),
-                      ),
-                      padding: EdgeInsets.symmetric(vertical: spacing.p16),
-                    ),
-                    child: Text(
-                      'カートに追加',
-                      style: textTheme.titleMedium?.copyWith(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
+                PrimaryButton(label: 'カートに追加', onPressed: () {}),
               ],
             ),
           ),
