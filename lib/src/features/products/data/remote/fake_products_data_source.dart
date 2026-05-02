@@ -7,4 +7,9 @@ class FakeProductsDataSource implements ProductsDataSource {
   Future<List<Product>> fetchProducts() async {
     return kTestProducts;
   }
+
+  @override
+  Future<List<Product>> searchProducts(String searchText) async {
+    return kTestProducts.where((p) => p.name.contains(searchText)).toList();
+  }
 }

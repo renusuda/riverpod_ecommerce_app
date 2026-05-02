@@ -10,4 +10,8 @@ class ProductsRepository {
   Future<List<Product>> fetchProducts() {
     return _remoteDataSource.fetchProducts();
   }
+
+  Future<List<Product>> searchProducts(String searchText) {
+    return _remoteDataSource.searchProducts(searchText);
+  }
 }

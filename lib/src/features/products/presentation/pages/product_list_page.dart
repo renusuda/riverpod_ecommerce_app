@@ -1,18 +1,24 @@
 import 'package:ecommerce_app/src/common_widgets/async_value_widget.dart';
 import 'package:ecommerce_app/src/features/products/presentation/providers/products_provider.dart';
 import 'package:ecommerce_app/src/features/products/presentation/widgets/product_card.dart';
+import 'package:ecommerce_app/src/features/products/presentation/widgets/product_search_bar.dart';
 import 'package:ecommerce_app/src/routing/app_route.dart';
 import 'package:ecommerce_app/src/theme/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class ProductListPage extends ConsumerWidget {
+class ProductListPage extends HookConsumerWidget {
   const ProductListPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final productsAsyncValue = ref.watch(productsProvider);
+    final controller = useTextEditingController();
+    useListenable(controller);
+
+    final productsAsyncValue = ref.watch(productsProvider(controller.text));
+
     final spacing = context.spacing;
 
     return Scaffold(
@@ -22,25 +28,39 @@ class ProductListPage extends ConsumerWidget {
         title: const Text('ショップ'),
         centerTitle: false,
       ),
-      body: AsyncValueWidget(
-        asyncValue: productsAsyncValue,
-        data: (products) => ListView.separated(
-          padding: EdgeInsets.symmetric(
-            vertical: spacing.p48,
-            horizontal: spacing.p24,
+      body: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: spacing.p24,
+              vertical: spacing.p16,
+            ),
+            child: ProductSearchBar(controller: controller),
           ),
-          itemCount: products.length,
-          separatorBuilder: (_, _) => SizedBox(height: spacing.p32),
-          itemBuilder: (context, index) {
-            return ProductCard(
-              product: products[index],
-              onTap: () => context.goNamed(
-                AppRoute.product.name,
-                pathParameters: {'id': products[index].id},
+          Expanded(
+            child: AsyncValueWidget(
+              asyncValue: productsAsyncValue,
+              data: (products) => ListView.separated(
+                padding: EdgeInsets.only(
+                  bottom: spacing.p48,
+                  left: spacing.p24,
+                  right: spacing.p24,
+                ),
+                itemCount: products.length,
+                separatorBuilder: (_, _) => SizedBox(height: spacing.p32),
+                itemBuilder: (context, index) {
+                  return ProductCard(
+                    product: products[index],
+                    onTap: () => context.goNamed(
+                      AppRoute.product.name,
+                      pathParameters: {'id': products[index].id},
+                    ),
+                  );
+                },
               ),
-            );
-          },
-        ),
+            ),
+          ),
+        ],
       ),
     );
   }

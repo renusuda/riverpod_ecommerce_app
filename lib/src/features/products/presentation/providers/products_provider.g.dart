@@ -106,7 +106,7 @@ String _$productsRepositoryHash() =>
     r'9171aceaf27a1a47e4fe643030c43edfc40f7e4f';
 
 @ProviderFor(products)
-final productsProvider = ProductsProvider._();
+final productsProvider = ProductsFamily._();
 
 final class ProductsProvider
     extends
@@ -116,19 +116,26 @@ final class ProductsProvider
           FutureOr<List<Product>>
         >
     with $FutureModifier<List<Product>>, $FutureProvider<List<Product>> {
-  ProductsProvider._()
-    : super(
-        from: null,
-        argument: null,
-        retry: null,
-        name: r'productsProvider',
-        isAutoDispose: true,
-        dependencies: null,
-        $allTransitiveDependencies: null,
-      );
+  ProductsProvider._({
+    required ProductsFamily super.from,
+    required String super.argument,
+  }) : super(
+         retry: null,
+         name: r'productsProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
   @override
   String debugGetCreateSourceHash() => _$productsHash();
+
+  @override
+  String toString() {
+    return r'productsProvider'
+        ''
+        '($argument)';
+  }
 
   @$internal
   @override
@@ -138,8 +145,37 @@ final class ProductsProvider
 
   @override
   FutureOr<List<Product>> create(Ref ref) {
-    return products(ref);
+    final argument = this.argument as String;
+    return products(ref, argument);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is ProductsProvider && other.argument == argument;
+  }
+
+  @override
+  int get hashCode {
+    return argument.hashCode;
   }
 }
 
-String _$productsHash() => r'4ee97270b9f2a509ee1d3fbab0d3fc7e5514a6f1';
+String _$productsHash() => r'91b5b6c16be749faa79fb4958a991d1bb01d2bc9';
+
+final class ProductsFamily extends $Family
+    with $FunctionalFamilyOverride<FutureOr<List<Product>>, String> {
+  ProductsFamily._()
+    : super(
+        retry: null,
+        name: r'productsProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  ProductsProvider call(String searchText) =>
+      ProductsProvider._(argument: searchText, from: this);
+
+  @override
+  String toString() => r'productsProvider';
+}

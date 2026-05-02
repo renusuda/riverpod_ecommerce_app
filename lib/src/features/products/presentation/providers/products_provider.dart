@@ -18,7 +18,8 @@ ProductsRepository productsRepository(Ref ref) {
 }
 
 @riverpod
-Future<List<Product>> products(Ref ref) {
+Future<List<Product>> products(Ref ref, String searchText) {
   final repository = ref.watch(productsRepositoryProvider);
-  return repository.fetchProducts();
+  if (searchText.isEmpty) return repository.fetchProducts();
+  return repository.searchProducts(searchText);
 }
