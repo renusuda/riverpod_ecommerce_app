@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/src/common_widgets/async_value_widget.dart';
 import 'package:ecommerce_app/src/features/products/presentation/providers/products_provider.dart';
 import 'package:ecommerce_app/src/features/products/presentation/widgets/product_card.dart';
 import 'package:ecommerce_app/src/routing/app_route.dart';
@@ -21,29 +22,26 @@ class ProductListPage extends ConsumerWidget {
         title: const Text('My Shop'),
         centerTitle: false,
       ),
-      body: switch (productsAsyncValue) {
-        AsyncValue(:final value?) => ListView.separated(
+      body: AsyncValueWidget(
+        asyncValue: productsAsyncValue,
+        data: (products) => ListView.separated(
           padding: EdgeInsets.symmetric(
             vertical: spacing.p48,
             horizontal: spacing.p24,
           ),
-          itemCount: value.length,
+          itemCount: products.length,
           separatorBuilder: (_, _) => SizedBox(height: spacing.p32),
           itemBuilder: (context, index) {
             return ProductCard(
-              product: value[index],
+              product: products[index],
               onTap: () => context.goNamed(
                 AppRoute.product.name,
-                pathParameters: {'id': value[index].id},
+                pathParameters: {'id': products[index].id},
               ),
             );
           },
         ),
-        AsyncValue(error: != null) => Center(
-          child: Text('${productsAsyncValue.error}'),
-        ),
-        AsyncValue() => const Center(child: CircularProgressIndicator()),
-      },
+      ),
     );
   }
 }
