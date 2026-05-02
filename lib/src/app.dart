@@ -12,7 +12,7 @@ class App extends ConsumerWidget {
     return MaterialApp.router(
       routerConfig: goRouter,
       debugShowCheckedModeBanner: false,
-      title: 'Ecommerce App',
+      title: 'Eコマースアプリ',
       theme: ThemeData(
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
         extensions: const [AppSpacing.standard],
