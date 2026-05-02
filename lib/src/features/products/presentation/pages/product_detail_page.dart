@@ -57,7 +57,7 @@ class _ProductDetailView extends StatelessWidget {
           SizedBox(height: spacing.p16),
           AppCard(
             child: Padding(
-              padding: EdgeInsets.all(spacing.p16),
+              padding: EdgeInsets.all(spacing.p24),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
