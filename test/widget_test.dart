@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/src/app.dart';
+import 'package:ecommerce_app/src/features/products/presentation/pages/product_detail_page.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -9,5 +10,15 @@ void main() {
     expect(find.text('Bruschetta plate'), findsOneWidget);
     expect(find.text('\$15.00'), findsOneWidget);
     expect(find.text('Quantity: 5'), findsWidgets);
+  });
+
+  testWidgets('製品カードをタップすると詳細画面に遷移する', (tester) async {
+    await tester.pumpWidget(const ProviderScope(child: App()));
+
+    await tester.tap(find.text('Bruschetta plate'));
+    await tester.pumpAndSettle();
+
+    expect(find.byType(ProductDetailPage), findsOneWidget);
+    expect(find.text('1'), findsOneWidget);
   });
 }
