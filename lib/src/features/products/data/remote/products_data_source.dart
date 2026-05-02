@@ -4,4 +4,6 @@ abstract interface class ProductsDataSource {
   Future<List<Product>> fetchProducts();
 
   Future<List<Product>> searchProducts(String searchText);
+
+  Future<Product> fetchProductById(String id);
 }

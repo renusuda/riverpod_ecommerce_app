@@ -160,7 +160,7 @@ final class ProductsProvider
   }
 }
 
-String _$productsHash() => r'91b5b6c16be749faa79fb4958a991d1bb01d2bc9';
+String _$productsHash() => r'8dd1158e35b95d3de72548170d4e7b48092e2bc3';
 
 final class ProductsFamily extends $Family
     with $FunctionalFamilyOverride<FutureOr<List<Product>>, String> {
@@ -178,4 +178,73 @@ final class ProductsFamily extends $Family
 
   @override
   String toString() => r'productsProvider';
+}
+
+@ProviderFor(product)
+final productProvider = ProductFamily._();
+
+final class ProductProvider
+    extends $FunctionalProvider<AsyncValue<Product>, Product, FutureOr<Product>>
+    with $FutureModifier<Product>, $FutureProvider<Product> {
+  ProductProvider._({
+    required ProductFamily super.from,
+    required String super.argument,
+  }) : super(
+         retry: null,
+         name: r'productProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
+
+  @override
+  String debugGetCreateSourceHash() => _$productHash();
+
+  @override
+  String toString() {
+    return r'productProvider'
+        ''
+        '($argument)';
+  }
+
+  @$internal
+  @override
+  $FutureProviderElement<Product> $createElement($ProviderPointer pointer) =>
+      $FutureProviderElement(pointer);
+
+  @override
+  FutureOr<Product> create(Ref ref) {
+    final argument = this.argument as String;
+    return product(ref, argument);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is ProductProvider && other.argument == argument;
+  }
+
+  @override
+  int get hashCode {
+    return argument.hashCode;
+  }
+}
+
+String _$productHash() => r'eed78d6a02a568f83fc36f90695c4b08a8b9c24e';
+
+final class ProductFamily extends $Family
+    with $FunctionalFamilyOverride<FutureOr<Product>, String> {
+  ProductFamily._()
+    : super(
+        retry: null,
+        name: r'productProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  ProductProvider call(String id) =>
+      ProductProvider._(argument: id, from: this);
+
+  @override
+  String toString() => r'productProvider';
 }

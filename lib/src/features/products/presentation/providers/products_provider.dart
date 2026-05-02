@@ -28,3 +28,9 @@ Future<List<Product>> products(Ref ref, String searchText) async {
 
   return repository.searchProducts(searchText);
 }
+
+@riverpod
+Future<Product> product(Ref ref, String id) async {
+  final repository = ref.watch(productsRepositoryProvider);
+  return repository.fetchProductById(id);
+}

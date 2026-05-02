@@ -12,4 +12,12 @@ class FakeProductsDataSource implements ProductsDataSource {
   Future<List<Product>> searchProducts(String searchText) async {
     return kTestProducts.where((p) => p.name.contains(searchText)).toList();
   }
+
+  @override
+  Future<Product> fetchProductById(String id) async {
+    return kTestProducts.firstWhere(
+      (p) => p.id == id,
+      orElse: () => throw StateError('商品が見つかりません: $id'),
+    );
+  }
 }
