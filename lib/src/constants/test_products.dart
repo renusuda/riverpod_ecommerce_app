@@ -3,7 +3,7 @@ import 'package:ecommerce_app/src/features/products/domain/product.dart';
 const kTestProducts = [
   Product(
     id: '1',
-    name: 'Bruschetta plate',
+    name: 'ブルスケッタプレート',
     imageUrl: 'assets/products/bruschetta-plate.jpg',
     price: 15,
     stockQuantity: 5,
@@ -12,14 +12,14 @@ const kTestProducts = [
   ),
   Product(
     id: '2',
-    name: 'Mozzarella plate',
+    name: 'モッツァレラプレート',
     imageUrl: 'assets/products/mozzarella-plate.jpg',
     price: 13,
     stockQuantity: 5,
   ),
   Product(
     id: '3',
-    name: 'Pasta plate',
+    name: 'パスタプレート',
     imageUrl: 'assets/products/pasta-plate.jpg',
     price: 17,
     stockQuantity: 5,
@@ -28,7 +28,7 @@ const kTestProducts = [
   ),
   Product(
     id: '4',
-    name: 'Piggy Bank Blue',
+    name: '貯金箱（ブルー）',
     imageUrl: 'assets/products/piggy-blue.jpg',
     price: 12,
     stockQuantity: 5,
@@ -37,7 +37,7 @@ const kTestProducts = [
   ),
   Product(
     id: '5',
-    name: 'Piggy Bank Green',
+    name: '貯金箱（グリーン）',
     imageUrl: 'assets/products/piggy-green.jpg',
     price: 12,
     stockQuantity: 10,
@@ -46,7 +46,7 @@ const kTestProducts = [
   ),
   Product(
     id: '6',
-    name: 'Piggy Bank Pink',
+    name: '貯金箱（ピンク）',
     imageUrl: 'assets/products/piggy-pink.jpg',
     price: 12,
     stockQuantity: 10,
@@ -55,7 +55,7 @@ const kTestProducts = [
   ),
   Product(
     id: '7',
-    name: 'Pizza plate',
+    name: 'ピザプレート',
     imageUrl: 'assets/products/pizza-plate.jpg',
     price: 18,
     stockQuantity: 10,
@@ -64,7 +64,7 @@ const kTestProducts = [
   ),
   Product(
     id: '8',
-    name: 'Plate and Bowl',
+    name: 'プレートとボウル',
     imageUrl: 'assets/products/plate-and-bowl.jpg',
     price: 21,
     stockQuantity: 10,
@@ -73,7 +73,7 @@ const kTestProducts = [
   ),
   Product(
     id: '9',
-    name: 'Salt and pepper lemon',
+    name: '塩・コショウ（レモン）',
     imageUrl: 'assets/products/salt-pepper-lemon.jpg',
     price: 11,
     stockQuantity: 10,
@@ -82,7 +82,7 @@ const kTestProducts = [
   ),
   Product(
     id: '10',
-    name: 'Salt and pepper olives',
+    name: '塩・コショウ（オリーブ）',
     imageUrl: 'assets/products/salt-pepper-olives.jpg',
     price: 11,
     stockQuantity: 10,
@@ -91,7 +91,7 @@ const kTestProducts = [
   ),
   Product(
     id: '11',
-    name: 'Snacks plate',
+    name: 'スナックプレート',
     imageUrl: 'assets/products/snacks-plate.jpg',
     price: 24,
     stockQuantity: 10,
@@ -100,7 +100,7 @@ const kTestProducts = [
   ),
   Product(
     id: '12',
-    name: 'Flowers plate',
+    name: 'フラワープレート',
     imageUrl: 'assets/products/flowers-plate.jpg',
     price: 22,
     stockQuantity: 10,
@@ -109,7 +109,7 @@ const kTestProducts = [
   ),
   Product(
     id: '13',
-    name: 'Juicer for citrus fruits',
+    name: '柑橘系ジューサー',
     imageUrl: 'assets/products/juicer-citrus-fruits.jpg',
     price: 14,
     stockQuantity: 10,
@@ -118,7 +118,7 @@ const kTestProducts = [
   ),
   Product(
     id: '14',
-    name: 'Honey pot',
+    name: 'ハニーポット',
     imageUrl: 'assets/products/honey-pot.jpg',
     price: 16,
     stockQuantity: 10,
