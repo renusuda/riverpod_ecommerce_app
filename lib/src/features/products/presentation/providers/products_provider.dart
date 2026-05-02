@@ -1,23 +1,10 @@
 import 'dart:async';
 
-import 'package:ecommerce_app/src/features/products/data/products_repository.dart';
-import 'package:ecommerce_app/src/features/products/data/remote/fake_products_data_source.dart';
-import 'package:ecommerce_app/src/features/products/data/remote/products_data_source.dart';
+import 'package:ecommerce_app/src/features/products/data/providers/products_repository_provider.dart';
 import 'package:ecommerce_app/src/features/products/domain/product.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'products_provider.g.dart';
-
-@riverpod
-ProductsDataSource productsDataSource(Ref ref) {
-  return FakeProductsDataSource();
-}
-
-@riverpod
-ProductsRepository productsRepository(Ref ref) {
-  final remoteDataSource = ref.watch(productsDataSourceProvider);
-  return ProductsRepository(remoteDataSource: remoteDataSource);
-}
 
 @riverpod
 Future<List<Product>> products(Ref ref, String searchText) async {
