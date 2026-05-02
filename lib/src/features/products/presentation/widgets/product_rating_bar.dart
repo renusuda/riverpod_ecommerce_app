@@ -17,17 +17,20 @@ class ProductRatingBar extends StatelessWidget {
 
     return Row(
       children: [
-        const Icon(Icons.star, color: Color(0xFFFFC107)),
-        SizedBox(width: spacing.p8),
-        Text(
-          averageRating.toStringAsFixed(1),
-          style: Theme.of(context).textTheme.bodyLarge,
-        ),
-        SizedBox(width: spacing.p8),
-        Text(
-          '$reviewCount ratings',
-          style: Theme.of(context).textTheme.bodyMedium,
-        ),
+        if (averageRating > 0) ...[
+          const Icon(Icons.star, color: Color(0xFFFFC107)),
+          SizedBox(width: spacing.p8),
+          Text(
+            averageRating.toStringAsFixed(1),
+            style: Theme.of(context).textTheme.bodyLarge,
+          ),
+          SizedBox(width: spacing.p8),
+        ],
+        if (reviewCount > 0)
+          Text(
+            '$reviewCount ratings',
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
       ],
     );
   }
