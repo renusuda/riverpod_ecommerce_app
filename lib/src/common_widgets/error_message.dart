@@ -7,6 +7,8 @@ class ErrorMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text(errorMessage));
+    return Center(
+      child: Text(errorMessage, style: const TextStyle(color: Colors.red)),
+    );
   }
 }
