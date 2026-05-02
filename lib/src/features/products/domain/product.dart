@@ -7,6 +7,7 @@ sealed class Product with _$Product {
   const factory Product({
     required String id,
     required String name,
+    required String description,
     required String imageUrl,
     required int price,
     required int stockQuantity,

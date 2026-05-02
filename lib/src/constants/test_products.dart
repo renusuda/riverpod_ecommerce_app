@@ -4,6 +4,7 @@ const kTestProducts = [
   Product(
     id: '1',
     name: 'ブルスケッタプレート',
+    description: 'イタリア陶器職人による手描きのブルスケッタ柄プレート。食卓を華やかに彩ります。',
     imageUrl: 'assets/products/bruschetta-plate.jpg',
     price: 2500,
     stockQuantity: 5,
@@ -13,6 +14,7 @@ const kTestProducts = [
   Product(
     id: '2',
     name: 'モッツァレラプレート',
+    description: 'モッツァレラチーズをモチーフにした陶器プレート。おしゃれなテーブルウェアです。',
     imageUrl: 'assets/products/mozzarella-plate.jpg',
     price: 2200,
     stockQuantity: 5,
@@ -20,6 +22,7 @@ const kTestProducts = [
   Product(
     id: '3',
     name: 'パスタプレート',
+    description: 'パスタ料理にぴったりの深みのあるプレート。イタリア風のデザインが食欲をそそります。',
     imageUrl: 'assets/products/pasta-plate.jpg',
     price: 2800,
     stockQuantity: 5,
@@ -29,6 +32,7 @@ const kTestProducts = [
   Product(
     id: '4',
     name: '貯金箱（ブルー）',
+    description: 'さわやかなブルーカラーの陶器製貯金箱。インテリアにも映えるデザインです。',
     imageUrl: 'assets/products/piggy-blue.jpg',
     price: 2000,
     stockQuantity: 5,
@@ -38,6 +42,7 @@ const kTestProducts = [
   Product(
     id: '5',
     name: '貯金箱（グリーン）',
+    description: 'ナチュラルなグリーンカラーの陶器製貯金箱。お部屋に癒しをプラスします。',
     imageUrl: 'assets/products/piggy-green.jpg',
     price: 2000,
     stockQuantity: 10,
@@ -47,6 +52,7 @@ const kTestProducts = [
   Product(
     id: '6',
     name: '貯金箱（ピンク）',
+    description: 'かわいらしいピンクカラーの陶器製貯金箱。贈り物にも喜ばれます。',
     imageUrl: 'assets/products/piggy-pink.jpg',
     price: 2000,
     stockQuantity: 10,
@@ -56,6 +62,7 @@ const kTestProducts = [
   Product(
     id: '7',
     name: 'ピザプレート',
+    description: 'ピザ柄の手描きプレート。パーティーシーンを盛り上げる一枚です。',
     imageUrl: 'assets/products/pizza-plate.jpg',
     price: 3200,
     stockQuantity: 10,
@@ -65,6 +72,7 @@ const kTestProducts = [
   Product(
     id: '8',
     name: 'プレートとボウル',
+    description: 'プレートとボウルのセット。毎日の食事をより豊かに演出します。',
     imageUrl: 'assets/products/plate-and-bowl.jpg',
     price: 3800,
     stockQuantity: 10,
@@ -74,6 +82,7 @@ const kTestProducts = [
   Product(
     id: '9',
     name: '塩・コショウ（レモン）',
+    description: 'レモン柄の塩・コショウ入れ。明るいデザインでキッチンを彩ります。',
     imageUrl: 'assets/products/salt-pepper-lemon.jpg',
     price: 880,
     stockQuantity: 10,
@@ -83,6 +92,7 @@ const kTestProducts = [
   Product(
     id: '10',
     name: '塩・コショウ（オリーブ）',
+    description: 'オリーブ柄の塩・コショウ入れ。落ち着いたデザインで食卓に馴染みます。',
     imageUrl: 'assets/products/salt-pepper-olives.jpg',
     price: 880,
     stockQuantity: 10,
@@ -92,6 +102,7 @@ const kTestProducts = [
   Product(
     id: '11',
     name: 'スナックプレート',
+    description: 'おつまみやスナックを盛り付けるのに最適なプレート。おもてなしにも活躍します。',
     imageUrl: 'assets/products/snacks-plate.jpg',
     price: 4500,
     stockQuantity: 10,
@@ -101,6 +112,7 @@ const kTestProducts = [
   Product(
     id: '12',
     name: 'フラワープレート',
+    description: '花柄が美しい陶器プレート。春の食卓に華を添えます。',
     imageUrl: 'assets/products/flowers-plate.jpg',
     price: 4000,
     stockQuantity: 10,
@@ -110,6 +122,7 @@ const kTestProducts = [
   Product(
     id: '13',
     name: '柑橘系ジューサー',
+    description: '柑橘系フルーツのジュースを手軽に絞れる陶器製ジューサー。',
     imageUrl: 'assets/products/juicer-citrus-fruits.jpg',
     price: 2500,
     stockQuantity: 10,
@@ -119,6 +132,7 @@ const kTestProducts = [
   Product(
     id: '14',
     name: 'ハニーポット',
+    description: 'はちみつを優雅に保存できる陶器製ポット。テーブルに置くだけでサマになります。',
     imageUrl: 'assets/products/honey-pot.jpg',
     price: 2800,
     stockQuantity: 10,
