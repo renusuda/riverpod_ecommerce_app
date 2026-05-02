@@ -10,5 +10,6 @@ sealed class Product with _$Product {
     required String imageUrl,
     required double price,
     required int stockQuantity,
+    @Default(0) int reviewCount,
   }) = _Product;
 }

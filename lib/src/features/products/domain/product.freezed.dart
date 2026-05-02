@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Product {
 
- String get id; String get name; String get imageUrl; double get price; int get stockQuantity;
+ String get id; String get name; String get imageUrl; double get price; int get stockQuantity; int get reviewCount;
 /// Create a copy of Product
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $ProductCopyWith<Product> get copyWith => _$ProductCopyWithImpl<Product>(this as
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Product&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.price, price) || other.price == price)&&(identical(other.stockQuantity, stockQuantity) || other.stockQuantity == stockQuantity));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Product&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.price, price) || other.price == price)&&(identical(other.stockQuantity, stockQuantity) || other.stockQuantity == stockQuantity)&&(identical(other.reviewCount, reviewCount) || other.reviewCount == reviewCount));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,name,imageUrl,price,stockQuantity);
+int get hashCode => Object.hash(runtimeType,id,name,imageUrl,price,stockQuantity,reviewCount);
 
 @override
 String toString() {
-  return 'Product(id: $id, name: $name, imageUrl: $imageUrl, price: $price, stockQuantity: $stockQuantity)';
+  return 'Product(id: $id, name: $name, imageUrl: $imageUrl, price: $price, stockQuantity: $stockQuantity, reviewCount: $reviewCount)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $ProductCopyWith<$Res>  {
   factory $ProductCopyWith(Product value, $Res Function(Product) _then) = _$ProductCopyWithImpl;
 @useResult
 $Res call({
- String id, String name, String imageUrl, double price, int stockQuantity
+ String id, String name, String imageUrl, double price, int stockQuantity, int reviewCount
 });
 
 
@@ -62,13 +62,14 @@ class _$ProductCopyWithImpl<$Res>
 
 /// Create a copy of Product
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? imageUrl = null,Object? price = null,Object? stockQuantity = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? imageUrl = null,Object? price = null,Object? stockQuantity = null,Object? reviewCount = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,imageUrl: null == imageUrl ? _self.imageUrl : imageUrl // ignore: cast_nullable_to_non_nullable
 as String,price: null == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
 as double,stockQuantity: null == stockQuantity ? _self.stockQuantity : stockQuantity // ignore: cast_nullable_to_non_nullable
+as int,reviewCount: null == reviewCount ? _self.reviewCount : reviewCount // ignore: cast_nullable_to_non_nullable
 as int,
   ));
 }
@@ -151,10 +152,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  String imageUrl,  double price,  int stockQuantity)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  String imageUrl,  double price,  int stockQuantity,  int reviewCount)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Product() when $default != null:
-return $default(_that.id,_that.name,_that.imageUrl,_that.price,_that.stockQuantity);case _:
+return $default(_that.id,_that.name,_that.imageUrl,_that.price,_that.stockQuantity,_that.reviewCount);case _:
   return orElse();
 
 }
@@ -172,10 +173,10 @@ return $default(_that.id,_that.name,_that.imageUrl,_that.price,_that.stockQuanti
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  String imageUrl,  double price,  int stockQuantity)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  String imageUrl,  double price,  int stockQuantity,  int reviewCount)  $default,) {final _that = this;
 switch (_that) {
 case _Product():
-return $default(_that.id,_that.name,_that.imageUrl,_that.price,_that.stockQuantity);}
+return $default(_that.id,_that.name,_that.imageUrl,_that.price,_that.stockQuantity,_that.reviewCount);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -189,10 +190,10 @@ return $default(_that.id,_that.name,_that.imageUrl,_that.price,_that.stockQuanti
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  String imageUrl,  double price,  int stockQuantity)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  String imageUrl,  double price,  int stockQuantity,  int reviewCount)?  $default,) {final _that = this;
 switch (_that) {
 case _Product() when $default != null:
-return $default(_that.id,_that.name,_that.imageUrl,_that.price,_that.stockQuantity);case _:
+return $default(_that.id,_that.name,_that.imageUrl,_that.price,_that.stockQuantity,_that.reviewCount);case _:
   return null;
 
 }
@@ -204,7 +205,7 @@ return $default(_that.id,_that.name,_that.imageUrl,_that.price,_that.stockQuanti
 
 
 class _Product implements Product {
-  const _Product({required this.id, required this.name, required this.imageUrl, required this.price, required this.stockQuantity});
+  const _Product({required this.id, required this.name, required this.imageUrl, required this.price, required this.stockQuantity, this.reviewCount = 0});
   
 
 @override final  String id;
@@ -212,6 +213,7 @@ class _Product implements Product {
 @override final  String imageUrl;
 @override final  double price;
 @override final  int stockQuantity;
+@override@JsonKey() final  int reviewCount;
 
 /// Create a copy of Product
 /// with the given fields replaced by the non-null parameter values.
@@ -223,16 +225,16 @@ _$ProductCopyWith<_Product> get copyWith => __$ProductCopyWithImpl<_Product>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Product&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.price, price) || other.price == price)&&(identical(other.stockQuantity, stockQuantity) || other.stockQuantity == stockQuantity));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Product&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.price, price) || other.price == price)&&(identical(other.stockQuantity, stockQuantity) || other.stockQuantity == stockQuantity)&&(identical(other.reviewCount, reviewCount) || other.reviewCount == reviewCount));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,name,imageUrl,price,stockQuantity);
+int get hashCode => Object.hash(runtimeType,id,name,imageUrl,price,stockQuantity,reviewCount);
 
 @override
 String toString() {
-  return 'Product(id: $id, name: $name, imageUrl: $imageUrl, price: $price, stockQuantity: $stockQuantity)';
+  return 'Product(id: $id, name: $name, imageUrl: $imageUrl, price: $price, stockQuantity: $stockQuantity, reviewCount: $reviewCount)';
 }
 
 
@@ -243,7 +245,7 @@ abstract mixin class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
   factory _$ProductCopyWith(_Product value, $Res Function(_Product) _then) = __$ProductCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String name, String imageUrl, double price, int stockQuantity
+ String id, String name, String imageUrl, double price, int stockQuantity, int reviewCount
 });
 
 
@@ -260,13 +262,14 @@ class __$ProductCopyWithImpl<$Res>
 
 /// Create a copy of Product
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? imageUrl = null,Object? price = null,Object? stockQuantity = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? imageUrl = null,Object? price = null,Object? stockQuantity = null,Object? reviewCount = null,}) {
   return _then(_Product(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,imageUrl: null == imageUrl ? _self.imageUrl : imageUrl // ignore: cast_nullable_to_non_nullable
 as String,price: null == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
 as double,stockQuantity: null == stockQuantity ? _self.stockQuantity : stockQuantity // ignore: cast_nullable_to_non_nullable
+as int,reviewCount: null == reviewCount ? _self.reviewCount : reviewCount // ignore: cast_nullable_to_non_nullable
 as int,
   ));
 }
