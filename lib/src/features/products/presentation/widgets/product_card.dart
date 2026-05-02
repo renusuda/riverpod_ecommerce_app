@@ -20,36 +20,33 @@ class ProductCard extends StatelessWidget {
       borderRadius: BorderRadius.circular(22),
       onTap: onTap,
       child: AppCard(
-        child: Padding(
-          padding: EdgeInsets.all(spacing.p24),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ProductImage(product: product),
-              SizedBox(height: spacing.p24),
-              const Divider(height: 1, thickness: 1, color: Color(0xFFD7D0DA)),
-              SizedBox(height: spacing.p24),
-              Text(
-                product.name,
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
-              SizedBox(height: spacing.p12),
-              ProductRatingBar(
-                averageRating: product.averageRating,
-                reviewCount: product.reviewCount,
-              ),
-              SizedBox(height: spacing.p24),
-              Text(
-                '¥${product.price.commaSeparated}',
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
-              SizedBox(height: spacing.p12),
-              Text(
-                '在庫数: ${product.stockQuantity}',
-                style: Theme.of(context).textTheme.bodyMedium,
-              ),
-            ],
-          ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ProductImage(product: product),
+            SizedBox(height: spacing.p24),
+            const Divider(height: 1, thickness: 1, color: Color(0xFFD7D0DA)),
+            SizedBox(height: spacing.p24),
+            Text(
+              product.name,
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            SizedBox(height: spacing.p12),
+            ProductRatingBar(
+              averageRating: product.averageRating,
+              reviewCount: product.reviewCount,
+            ),
+            SizedBox(height: spacing.p24),
+            Text(
+              '¥${product.price.commaSeparated}',
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            SizedBox(height: spacing.p12),
+            Text(
+              '在庫数: ${product.stockQuantity}',
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+          ],
         ),
       ),
     );

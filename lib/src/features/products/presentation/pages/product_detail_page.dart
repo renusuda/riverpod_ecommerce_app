@@ -48,56 +48,48 @@ class _ProductDetailView extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          AppCard(
-            child: Padding(
-              padding: EdgeInsets.all(spacing.p24),
-              child: ProductImage(product: product),
-            ),
-          ),
+          AppCard(child: ProductImage(product: product)),
           SizedBox(height: spacing.p16),
           AppCard(
-            child: Padding(
-              padding: EdgeInsets.all(spacing.p24),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(product.name, style: textTheme.titleLarge),
-                  SizedBox(height: spacing.p4),
-                  Text(product.description, style: textTheme.bodyMedium),
-                  SizedBox(height: spacing.p8),
-                  ProductRatingBar(
-                    averageRating: product.averageRating,
-                    reviewCount: product.reviewCount,
-                  ),
-                  const Divider(height: 32),
-                  Text(
-                    '¥${product.price.commaSeparated}',
-                    style: textTheme.headlineMedium,
-                  ),
-                  const Divider(height: 32),
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.black,
-                        foregroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(32),
-                        ),
-                        padding: EdgeInsets.symmetric(vertical: spacing.p16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(product.name, style: textTheme.titleLarge),
+                SizedBox(height: spacing.p4),
+                Text(product.description, style: textTheme.bodyMedium),
+                SizedBox(height: spacing.p8),
+                ProductRatingBar(
+                  averageRating: product.averageRating,
+                  reviewCount: product.reviewCount,
+                ),
+                const Divider(height: 32),
+                Text(
+                  '¥${product.price.commaSeparated}',
+                  style: textTheme.headlineMedium,
+                ),
+                const Divider(height: 32),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.black,
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(32),
                       ),
-                      child: Text(
-                        'カートに追加',
-                        style: textTheme.titleMedium?.copyWith(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      padding: EdgeInsets.symmetric(vertical: spacing.p16),
+                    ),
+                    child: Text(
+                      'カートに追加',
+                      style: textTheme.titleMedium?.copyWith(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],

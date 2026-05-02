@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/src/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class AppCard extends StatelessWidget {
@@ -7,6 +8,8 @@ class AppCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final spacing = context.spacing;
+
     return Card(
       color: const Color(0xFFFBF6FE),
       elevation: 1,
@@ -15,7 +18,7 @@ class AppCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(22),
         side: const BorderSide(color: Color(0xFFF0EAF3)),
       ),
-      child: child,
+      child: Padding(padding: EdgeInsets.all(spacing.p24), child: child),
     );
   }
 }
