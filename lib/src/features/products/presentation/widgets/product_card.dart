@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/src/extensions/int_extensions.dart';
 import 'package:ecommerce_app/src/features/products/domain/product.dart';
+import 'package:ecommerce_app/src/features/products/presentation/widgets/product_image.dart';
 import 'package:ecommerce_app/src/features/products/presentation/widgets/product_rating_bar.dart';
 import 'package:ecommerce_app/src/theme/app_theme.dart';
 import 'package:flutter/material.dart';
@@ -57,21 +58,6 @@ class ProductCard extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class ProductImage extends StatelessWidget {
-  const ProductImage({super.key, required this.product});
-
-  final Product product;
-
-  @override
-  Widget build(BuildContext context) {
-    return Image.asset(
-      product.imageUrl,
-      fit: BoxFit.contain,
-      semanticLabel: product.name,
     );
   }
 }
