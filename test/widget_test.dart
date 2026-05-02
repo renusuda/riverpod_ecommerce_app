@@ -38,7 +38,12 @@ void main() {
     await tester.pumpWidget(const ProviderScope(child: App()));
     await tester.pumpAndSettle();
 
-    await tester.tap(find.text('Bruschetta plate'));
+    await tester.tap(
+      find.ancestor(
+        of: find.text('Bruschetta plate'),
+        matching: find.byType(InkWell),
+      ),
+    );
     await tester.pumpAndSettle();
 
     expect(find.byType(ProductDetailPage), findsOneWidget);
