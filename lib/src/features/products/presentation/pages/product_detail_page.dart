@@ -11,7 +11,7 @@ class ProductDetailPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: const Color(0xFF1F1F1F),
         foregroundColor: Colors.white,
-        title: const Text('My Shop'),
+        title: const Text('ショップ'),
         centerTitle: false,
       ),
       body: Center(
