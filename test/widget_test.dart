@@ -9,11 +9,11 @@ void main() {
     await tester.pumpWidget(const ProviderScope(child: App()));
     await tester.pumpAndSettle();
 
-    expect(find.text('Bruschetta plate'), findsOneWidget);
+    expect(find.text('ブルスケッタプレート'), findsOneWidget);
     expect(find.text('4.5'), findsOneWidget);
-    expect(find.text('128 ratings'), findsOneWidget);
-    expect(find.text('\$15.00'), findsOneWidget);
-    expect(find.text('Quantity: 5'), findsWidgets);
+    expect(find.text('128 件のレビュー'), findsOneWidget);
+    expect(find.text('¥2,500'), findsOneWidget);
+    expect(find.text('在庫数: 5'), findsWidgets);
   });
 
   testWidgets('averageRating が 0 の商品は評価が非表示になる', (tester) async {
@@ -21,7 +21,7 @@ void main() {
     await tester.pumpAndSettle();
 
     final mozzarellaCard = find.ancestor(
-      of: find.text('Mozzarella plate'),
+      of: find.text('モッツァレラプレート'),
       matching: find.byType(Card),
     );
     expect(
@@ -29,7 +29,7 @@ void main() {
       findsNothing,
     );
     expect(
-      find.descendant(of: mozzarellaCard, matching: find.text('0 ratings')),
+      find.descendant(of: mozzarellaCard, matching: find.text('0 件のレビュー')),
       findsNothing,
     );
   });
@@ -40,7 +40,7 @@ void main() {
 
     await tester.tap(
       find.ancestor(
-        of: find.text('Bruschetta plate'),
+        of: find.text('ブルスケッタプレート'),
         matching: find.byType(InkWell),
       ),
     );
