@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/src/extensions/int_extensions.dart';
 import 'package:ecommerce_app/src/features/products/domain/product.dart';
 import 'package:ecommerce_app/src/features/products/presentation/widgets/product_rating_bar.dart';
 import 'package:ecommerce_app/src/theme/app_theme.dart';
@@ -44,7 +45,7 @@ class ProductCard extends StatelessWidget {
               ),
               SizedBox(height: spacing.p24),
               Text(
-                '¥${product.price}',
+                '¥${product.price.commaSeparated}',
                 style: Theme.of(context).textTheme.titleLarge,
               ),
               SizedBox(height: spacing.p12),
