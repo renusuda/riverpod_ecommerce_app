@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:ecommerce_app/src/features/products/data/products_repository.dart';
 import 'package:ecommerce_app/src/features/products/data/remote/fake_products_data_source.dart';
 import 'package:ecommerce_app/src/features/products/data/remote/products_data_source.dart';
@@ -18,8 +20,11 @@ ProductsRepository productsRepository(Ref ref) {
 }
 
 @riverpod
-Future<List<Product>> products(Ref ref, String searchText) {
+Future<List<Product>> products(Ref ref, String searchText) async {
   final repository = ref.watch(productsRepositoryProvider);
   if (searchText.isEmpty) return repository.fetchProducts();
+
+  await Future<void>.delayed(const Duration(milliseconds: 250));
+
   return repository.searchProducts(searchText);
 }
