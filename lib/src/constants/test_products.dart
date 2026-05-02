@@ -7,6 +7,8 @@ const kTestProducts = [
     imageUrl: 'assets/products/bruschetta-plate.jpg',
     price: 15,
     stockQuantity: 5,
+    reviewCount: 128,
+    averageRating: 4.5,
   ),
   Product(
     id: '2',
@@ -14,6 +16,8 @@ const kTestProducts = [
     imageUrl: 'assets/products/mozzarella-plate.jpg',
     price: 13,
     stockQuantity: 5,
+    reviewCount: 74,
+    averageRating: 4.2,
   ),
   Product(
     id: '3',
@@ -21,6 +25,8 @@ const kTestProducts = [
     imageUrl: 'assets/products/pasta-plate.jpg',
     price: 17,
     stockQuantity: 5,
+    reviewCount: 203,
+    averageRating: 4.7,
   ),
   Product(
     id: '4',
@@ -28,6 +34,8 @@ const kTestProducts = [
     imageUrl: 'assets/products/piggy-blue.jpg',
     price: 12,
     stockQuantity: 5,
+    reviewCount: 56,
+    averageRating: 3.9,
   ),
   Product(
     id: '5',
@@ -35,6 +43,8 @@ const kTestProducts = [
     imageUrl: 'assets/products/piggy-green.jpg',
     price: 12,
     stockQuantity: 10,
+    reviewCount: 89,
+    averageRating: 4.1,
   ),
   Product(
     id: '6',
@@ -42,6 +52,8 @@ const kTestProducts = [
     imageUrl: 'assets/products/piggy-pink.jpg',
     price: 12,
     stockQuantity: 10,
+    reviewCount: 112,
+    averageRating: 4.4,
   ),
   Product(
     id: '7',
@@ -49,6 +61,8 @@ const kTestProducts = [
     imageUrl: 'assets/products/pizza-plate.jpg',
     price: 18,
     stockQuantity: 10,
+    reviewCount: 167,
+    averageRating: 4.6,
   ),
   Product(
     id: '8',
@@ -56,6 +70,8 @@ const kTestProducts = [
     imageUrl: 'assets/products/plate-and-bowl.jpg',
     price: 21,
     stockQuantity: 10,
+    reviewCount: 45,
+    averageRating: 4.0,
   ),
   Product(
     id: '9',
@@ -63,6 +79,8 @@ const kTestProducts = [
     imageUrl: 'assets/products/salt-pepper-lemon.jpg',
     price: 11,
     stockQuantity: 10,
+    reviewCount: 31,
+    averageRating: 3.7,
   ),
   Product(
     id: '10',
@@ -70,6 +88,8 @@ const kTestProducts = [
     imageUrl: 'assets/products/salt-pepper-olives.jpg',
     price: 11,
     stockQuantity: 10,
+    reviewCount: 58,
+    averageRating: 4.3,
   ),
   Product(
     id: '11',
@@ -77,6 +97,8 @@ const kTestProducts = [
     imageUrl: 'assets/products/snacks-plate.jpg',
     price: 24,
     stockQuantity: 10,
+    reviewCount: 95,
+    averageRating: 4.8,
   ),
   Product(
     id: '12',
@@ -84,6 +106,8 @@ const kTestProducts = [
     imageUrl: 'assets/products/flowers-plate.jpg',
     price: 22,
     stockQuantity: 10,
+    reviewCount: 143,
+    averageRating: 4.6,
   ),
   Product(
     id: '13',
@@ -91,6 +115,8 @@ const kTestProducts = [
     imageUrl: 'assets/products/juicer-citrus-fruits.jpg',
     price: 14,
     stockQuantity: 10,
+    reviewCount: 22,
+    averageRating: 3.5,
   ),
   Product(
     id: '14',
@@ -98,5 +124,7 @@ const kTestProducts = [
     imageUrl: 'assets/products/honey-pot.jpg',
     price: 16,
     stockQuantity: 10,
+    reviewCount: 187,
+    averageRating: 4.9,
   ),
 ];
