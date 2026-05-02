@@ -28,7 +28,7 @@ class ProductRatingBar extends StatelessWidget {
         ],
         if (reviewCount > 0)
           Text(
-            '$reviewCount ratings',
+            '$reviewCount 件のレビュー',
             style: Theme.of(context).textTheme.bodyMedium,
           ),
       ],
