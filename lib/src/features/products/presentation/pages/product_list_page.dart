@@ -27,6 +27,12 @@ class ProductListPage extends HookConsumerWidget {
         foregroundColor: Colors.white,
         title: const Text('ショップ'),
         centerTitle: false,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.shopping_cart),
+            onPressed: () => context.goNamed(AppRoute.cart.name),
+          ),
+        ],
       ),
       body: Column(
         children: [
