@@ -1,8 +1,8 @@
 import 'package:ecommerce_app/src/constants/test_products.dart';
-import 'package:ecommerce_app/src/features/products/data/remote/products_data_source.dart';
+import 'package:ecommerce_app/src/features/products/data/remote/products_remote_data_source.dart';
 import 'package:ecommerce_app/src/features/products/domain/product.dart';
 
-class FakeProductsDataSource implements ProductsDataSource {
+class FakeProductsRemoteDataSource implements ProductsRemoteDataSource {
   @override
   Future<List<Product>> fetchProducts() async {
     await Future.delayed(Duration(seconds: 1));

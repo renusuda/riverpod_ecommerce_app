@@ -1,11 +1,11 @@
-import 'package:ecommerce_app/src/features/products/data/remote/products_data_source.dart';
+import 'package:ecommerce_app/src/features/products/data/remote/products_remote_data_source.dart';
 import 'package:ecommerce_app/src/features/products/domain/product.dart';
 
 class ProductsRepository {
-  const ProductsRepository({required ProductsDataSource remoteDataSource})
+  const ProductsRepository({required ProductsRemoteDataSource remoteDataSource})
     : _remoteDataSource = remoteDataSource;
 
-  final ProductsDataSource _remoteDataSource;
+  final ProductsRemoteDataSource _remoteDataSource;
 
   Future<List<Product>> fetchProducts() {
     return _remoteDataSource.fetchProducts();

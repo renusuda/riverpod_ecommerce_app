@@ -9,53 +9,53 @@ part of 'products_repository_provider.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
 
-@ProviderFor(productsDataSource)
-final productsDataSourceProvider = ProductsDataSourceProvider._();
+@ProviderFor(productsRemoteDataSource)
+final productsRemoteDataSourceProvider = ProductsRemoteDataSourceProvider._();
 
-final class ProductsDataSourceProvider
+final class ProductsRemoteDataSourceProvider
     extends
         $FunctionalProvider<
-          ProductsDataSource,
-          ProductsDataSource,
-          ProductsDataSource
+          ProductsRemoteDataSource,
+          ProductsRemoteDataSource,
+          ProductsRemoteDataSource
         >
-    with $Provider<ProductsDataSource> {
-  ProductsDataSourceProvider._()
+    with $Provider<ProductsRemoteDataSource> {
+  ProductsRemoteDataSourceProvider._()
     : super(
         from: null,
         argument: null,
         retry: null,
-        name: r'productsDataSourceProvider',
+        name: r'productsRemoteDataSourceProvider',
         isAutoDispose: false,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
 
   @override
-  String debugGetCreateSourceHash() => _$productsDataSourceHash();
+  String debugGetCreateSourceHash() => _$productsRemoteDataSourceHash();
 
   @$internal
   @override
-  $ProviderElement<ProductsDataSource> $createElement(
+  $ProviderElement<ProductsRemoteDataSource> $createElement(
     $ProviderPointer pointer,
   ) => $ProviderElement(pointer);
 
   @override
-  ProductsDataSource create(Ref ref) {
-    return productsDataSource(ref);
+  ProductsRemoteDataSource create(Ref ref) {
+    return productsRemoteDataSource(ref);
   }
 
   /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(ProductsDataSource value) {
+  Override overrideWithValue(ProductsRemoteDataSource value) {
     return $ProviderOverride(
       origin: this,
-      providerOverride: $SyncValueProvider<ProductsDataSource>(value),
+      providerOverride: $SyncValueProvider<ProductsRemoteDataSource>(value),
     );
   }
 }
 
-String _$productsDataSourceHash() =>
-    r'666a598efcfd826e237d2770ce85d1e5f7074a1a';
+String _$productsRemoteDataSourceHash() =>
+    r'9a802ff8942f32cd3f5de8394f6eb1d991df62cf';
 
 @ProviderFor(productsRepository)
 final productsRepositoryProvider = ProductsRepositoryProvider._();
@@ -103,4 +103,4 @@ final class ProductsRepositoryProvider
 }
 
 String _$productsRepositoryHash() =>
-    r'f0a9b693609c5c841cdeb438f5119beb08882905';
+    r'193135e6f13c861f6cb63a3525237b9d9a10cb23';
