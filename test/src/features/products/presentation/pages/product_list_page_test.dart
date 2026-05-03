@@ -32,4 +32,28 @@ void main() {
       findsNothing,
     );
   });
+
+  testWidgets('検索ワードに一致する商品のみ表示される', (tester) async {
+    await tester.pumpWidget(const ProviderScope(child: App()));
+    await tester.pumpAndSettle();
+
+    await tester.enterText(find.byType(TextField), '貯金箱');
+    await tester.pumpAndSettle();
+
+    expect(find.text('貯金箱（ブルー）'), findsOneWidget);
+    expect(find.text('ブルスケッタプレート'), findsNothing);
+  });
+
+  testWidgets('検索ワードをクリアすると全商品が再表示される', (tester) async {
+    await tester.pumpWidget(const ProviderScope(child: App()));
+    await tester.pumpAndSettle();
+
+    await tester.enterText(find.byType(TextField), '貯金箱');
+    await tester.pumpAndSettle();
+    expect(find.text('ブルスケッタプレート'), findsNothing);
+
+    await tester.enterText(find.byType(TextField), '');
+    await tester.pumpAndSettle();
+    expect(find.text('ブルスケッタプレート'), findsOneWidget);
+  });
 }
