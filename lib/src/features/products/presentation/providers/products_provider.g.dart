@@ -64,7 +64,7 @@ final class ProductsProvider
   }
 }
 
-String _$productsHash() => r'8dd1158e35b95d3de72548170d4e7b48092e2bc3';
+String _$productsHash() => r'13470f908deeb0d80688a49441001717bf4d960f';
 
 final class ProductsFamily extends $Family
     with $FunctionalFamilyOverride<FutureOr<List<Product>>, String> {
