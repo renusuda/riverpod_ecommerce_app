@@ -1,6 +1,6 @@
 import 'package:ecommerce_app/src/common_widgets/quantity_stepper.dart';
 import 'package:ecommerce_app/src/extensions/int_extensions.dart';
-import 'package:ecommerce_app/src/features/products/presentation/providers/product_detail_provider.dart';
+import 'package:ecommerce_app/src/features/cart/presentation/providers/cart_product_detail_provider.dart';
 import 'package:ecommerce_app/src/features/products/presentation/widgets/product_image.dart';
 import 'package:ecommerce_app/src/theme/app_theme.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +18,7 @@ class CartItemCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final productAsyncValue = ref.watch(productDetailProvider(productId));
+    final productAsyncValue = ref.watch(cartProductDetailProvider(productId));
     final spacing = context.spacing;
     final textTheme = Theme.of(context).textTheme;
 
