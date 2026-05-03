@@ -2,18 +2,25 @@ import 'package:ecommerce_app/src/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class PrimaryButton extends StatelessWidget {
-  const PrimaryButton({super.key, required this.label, this.onPressed});
+  const PrimaryButton({
+    super.key,
+    required this.label,
+    this.onPressed,
+    this.expand = true,
+  });
 
   final String label;
 
   final VoidCallback? onPressed;
+
+  final bool expand;
 
   @override
   Widget build(BuildContext context) {
     final spacing = context.spacing;
 
     return SizedBox(
-      width: double.infinity,
+      width: expand ? double.infinity : null,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
@@ -22,7 +29,10 @@ class PrimaryButton extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(32),
           ),
-          padding: EdgeInsets.symmetric(vertical: spacing.p16),
+          padding: EdgeInsets.symmetric(
+            vertical: spacing.p16,
+            horizontal: spacing.p32,
+          ),
         ),
         child: Text(
           label,
