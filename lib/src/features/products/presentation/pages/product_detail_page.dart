@@ -52,7 +52,13 @@ class _ProductDetailView extends HookWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          AppCard(child: ProductImage(product: product)),
+          AppCard(
+            child: SizedBox(
+              height: 250,
+              width: double.infinity,
+              child: ProductImage(product: product),
+            ),
+          ),
           SizedBox(height: spacing.p16),
           AppCard(
             child: Column(
