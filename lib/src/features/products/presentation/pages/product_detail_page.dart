@@ -86,6 +86,7 @@ class _ProductDetailView extends HookWidget {
                       quantity: quantity.value,
                       onIncrement: () => quantity.value++,
                       onDecrement: () => quantity.value--,
+                      maxQuantity: product.stockQuantity,
                     ),
                   ],
                 ),

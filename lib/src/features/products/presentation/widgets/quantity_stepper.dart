@@ -6,6 +6,7 @@ class QuantityStepper extends StatelessWidget {
     required this.quantity,
     required this.onIncrement,
     required this.onDecrement,
+    required this.maxQuantity,
   });
 
   final int quantity;
@@ -13,6 +14,8 @@ class QuantityStepper extends StatelessWidget {
   final VoidCallback onIncrement;
 
   final VoidCallback onDecrement;
+
+  final int maxQuantity;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +34,10 @@ class QuantityStepper extends StatelessWidget {
             onPressed: quantity > 1 ? onDecrement : null,
           ),
           Text('$quantity', style: textTheme.bodyLarge),
-          IconButton(icon: const Icon(Icons.add), onPressed: onIncrement),
+          IconButton(
+            icon: const Icon(Icons.add),
+            onPressed: quantity >= maxQuantity ? null : onIncrement,
+          ),
         ],
       ),
     );
