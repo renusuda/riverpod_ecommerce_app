@@ -1,0 +1,13 @@
+import 'package:ecommerce_app/src/features/cart/data/local/cart_local_data_source.dart';
+import 'package:ecommerce_app/src/features/cart/domain/cart.dart';
+
+class CartRepository {
+  const CartRepository({required CartLocalDataSource localDataSource})
+    : _localDataSource = localDataSource;
+
+  final CartLocalDataSource _localDataSource;
+
+  Cart fetchCart() {
+    return _localDataSource.fetchCart();
+  }
+}

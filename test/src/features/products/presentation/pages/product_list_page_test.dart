@@ -74,6 +74,7 @@ void main() {
     await tester.tap(find.byIcon(Icons.shopping_cart));
     await tester.pumpAndSettle();
 
-    expect(find.text('カートは空です。'), findsOneWidget);
+    expect(find.text('カート'), findsOneWidget);
+    expect(find.text('カートは空です。'), findsNothing);
   });
 }
