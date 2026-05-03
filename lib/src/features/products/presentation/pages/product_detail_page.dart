@@ -3,7 +3,7 @@ import 'package:ecommerce_app/src/common_widgets/async_value_widget.dart';
 import 'package:ecommerce_app/src/common_widgets/primary_button.dart';
 import 'package:ecommerce_app/src/extensions/int_extensions.dart';
 import 'package:ecommerce_app/src/features/products/domain/product.dart';
-import 'package:ecommerce_app/src/features/products/presentation/providers/products_provider.dart';
+import 'package:ecommerce_app/src/features/products/presentation/providers/product_provider.dart';
 import 'package:ecommerce_app/src/features/products/presentation/widgets/product_image.dart';
 import 'package:ecommerce_app/src/features/products/presentation/widgets/product_rating_bar.dart';
 import 'package:ecommerce_app/src/features/products/presentation/widgets/quantity_stepper.dart';
