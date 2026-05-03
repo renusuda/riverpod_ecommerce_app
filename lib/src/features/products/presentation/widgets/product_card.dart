@@ -43,7 +43,9 @@ class ProductCard extends StatelessWidget {
             ),
             SizedBox(height: spacing.p12),
             Text(
-              '在庫数: ${product.stockQuantity}',
+              product.stockQuantity == 0
+                  ? '在庫切れ'
+                  : '在庫数: ${product.stockQuantity}',
               style: Theme.of(context).textTheme.bodyMedium,
             ),
           ],
