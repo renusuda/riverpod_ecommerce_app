@@ -2,15 +2,11 @@ import 'package:ecommerce_app/src/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class PrimaryButton extends StatelessWidget {
-  const PrimaryButton({
-    super.key,
-    required this.label,
-    required this.onPressed,
-  });
+  const PrimaryButton({super.key, required this.label, this.onPressed});
 
   final String label;
 
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {

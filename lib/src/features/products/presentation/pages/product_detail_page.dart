@@ -91,7 +91,10 @@ class _ProductDetailView extends HookWidget {
                   ],
                 ),
                 const Divider(height: 32),
-                PrimaryButton(label: 'カートに追加', onPressed: () {}),
+                PrimaryButton(
+                  label: product.stockQuantity == 0 ? '在庫切れ' : 'カートに追加',
+                  onPressed: product.stockQuantity == 0 ? null : () {},
+                ),
               ],
             ),
           ),
