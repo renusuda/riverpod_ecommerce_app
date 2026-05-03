@@ -26,7 +26,7 @@ final class ProductsDataSourceProvider
         argument: null,
         retry: null,
         name: r'productsDataSourceProvider',
-        isAutoDispose: true,
+        isAutoDispose: false,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
@@ -55,7 +55,7 @@ final class ProductsDataSourceProvider
 }
 
 String _$productsDataSourceHash() =>
-    r'314463b2fe594fb5e8b017f1a5b94e4f677a1282';
+    r'666a598efcfd826e237d2770ce85d1e5f7074a1a';
 
 @ProviderFor(productsRepository)
 final productsRepositoryProvider = ProductsRepositoryProvider._();
@@ -74,7 +74,7 @@ final class ProductsRepositoryProvider
         argument: null,
         retry: null,
         name: r'productsRepositoryProvider',
-        isAutoDispose: true,
+        isAutoDispose: false,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
@@ -103,4 +103,4 @@ final class ProductsRepositoryProvider
 }
 
 String _$productsRepositoryHash() =>
-    r'9171aceaf27a1a47e4fe643030c43edfc40f7e4f';
+    r'f0a9b693609c5c841cdeb438f5119beb08882905';

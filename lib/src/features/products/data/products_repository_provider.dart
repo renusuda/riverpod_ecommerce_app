@@ -5,12 +5,12 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'products_repository_provider.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 ProductsDataSource productsDataSource(Ref ref) {
   return FakeProductsDataSource();
 }
 
-@riverpod
+@Riverpod(keepAlive: true)
 ProductsRepository productsRepository(Ref ref) {
   final remoteDataSource = ref.watch(productsDataSourceProvider);
   return ProductsRepository(remoteDataSource: remoteDataSource);
