@@ -47,6 +47,24 @@ void main() {
     expect(find.text('0 件のレビュー'), findsNothing);
   });
 
+  testWidgets('カートアイコンをタップするとカート画面に遷移する', (tester) async {
+    await tester.pumpWidget(const ProviderScope(child: App()));
+    await tester.pumpAndSettle();
+
+    await tester.tap(
+      find.ancestor(
+        of: find.text('ブルスケッタプレート'),
+        matching: find.byType(InkWell),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.byIcon(Icons.shopping_cart));
+    await tester.pumpAndSettle();
+
+    expect(find.text('カートは空です。'), findsOneWidget);
+  });
+
   testWidgets('詳細画面の数量ステッパーが正しく動作する', (tester) async {
     await tester.pumpWidget(const ProviderScope(child: App()));
     await tester.pumpAndSettle();
