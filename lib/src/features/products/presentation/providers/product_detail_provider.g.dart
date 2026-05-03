@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'product_provider.dart';
+part of 'product_detail_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -9,29 +9,29 @@ part of 'product_provider.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
 
-@ProviderFor(product)
-final productProvider = ProductFamily._();
+@ProviderFor(productDetail)
+final productDetailProvider = ProductDetailFamily._();
 
-final class ProductProvider
+final class ProductDetailProvider
     extends $FunctionalProvider<AsyncValue<Product>, Product, FutureOr<Product>>
     with $FutureModifier<Product>, $FutureProvider<Product> {
-  ProductProvider._({
-    required ProductFamily super.from,
+  ProductDetailProvider._({
+    required ProductDetailFamily super.from,
     required String super.argument,
   }) : super(
          retry: null,
-         name: r'productProvider',
+         name: r'productDetailProvider',
          isAutoDispose: true,
          dependencies: null,
          $allTransitiveDependencies: null,
        );
 
   @override
-  String debugGetCreateSourceHash() => _$productHash();
+  String debugGetCreateSourceHash() => _$productDetailHash();
 
   @override
   String toString() {
-    return r'productProvider'
+    return r'productDetailProvider'
         ''
         '($argument)';
   }
@@ -44,12 +44,12 @@ final class ProductProvider
   @override
   FutureOr<Product> create(Ref ref) {
     final argument = this.argument as String;
-    return product(ref, argument);
+    return productDetail(ref, argument);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is ProductProvider && other.argument == argument;
+    return other is ProductDetailProvider && other.argument == argument;
   }
 
   @override
@@ -58,22 +58,22 @@ final class ProductProvider
   }
 }
 
-String _$productHash() => r'eed78d6a02a568f83fc36f90695c4b08a8b9c24e';
+String _$productDetailHash() => r'bb6edbf625af8567007d0f738c6f6cf9517361f0';
 
-final class ProductFamily extends $Family
+final class ProductDetailFamily extends $Family
     with $FunctionalFamilyOverride<FutureOr<Product>, String> {
-  ProductFamily._()
+  ProductDetailFamily._()
     : super(
         retry: null,
-        name: r'productProvider',
+        name: r'productDetailProvider',
         dependencies: null,
         $allTransitiveDependencies: null,
         isAutoDispose: true,
       );
 
-  ProductProvider call(String id) =>
-      ProductProvider._(argument: id, from: this);
+  ProductDetailProvider call(String id) =>
+      ProductDetailProvider._(argument: id, from: this);
 
   @override
-  String toString() => r'productProvider';
+  String toString() => r'productDetailProvider';
 }
