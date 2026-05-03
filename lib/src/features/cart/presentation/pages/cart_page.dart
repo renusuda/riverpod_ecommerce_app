@@ -10,9 +10,6 @@ class CartPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final spacing = context.spacing;
-    final textTheme = Theme.of(context).textTheme;
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF1F1F1F),
@@ -20,19 +17,31 @@ class CartPage extends ConsumerWidget {
         title: const Text('カート'),
         centerTitle: true,
       ),
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text('カートは空です。', style: textTheme.titleLarge),
-            SizedBox(height: spacing.p16),
-            PrimaryButton(
-              label: 'ホーム画面に戻る',
-              onPressed: () => context.goNamed(AppRoute.home.name),
-              expand: false,
-            ),
-          ],
-        ),
+      body: const _EmptyCartView(),
+    );
+  }
+}
+
+class _EmptyCartView extends StatelessWidget {
+  const _EmptyCartView();
+
+  @override
+  Widget build(BuildContext context) {
+    final spacing = context.spacing;
+    final textTheme = Theme.of(context).textTheme;
+
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text('カートは空です。', style: textTheme.titleLarge),
+          SizedBox(height: spacing.p16),
+          PrimaryButton(
+            label: 'ホーム画面に戻る',
+            onPressed: () => context.goNamed(AppRoute.home.name),
+            expand: false,
+          ),
+        ],
       ),
     );
   }
