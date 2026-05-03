@@ -9,6 +9,47 @@ part of 'cart_repository_provider.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
 
+@ProviderFor(appDatabase)
+final appDatabaseProvider = AppDatabaseProvider._();
+
+final class AppDatabaseProvider
+    extends $FunctionalProvider<AppDatabase, AppDatabase, AppDatabase>
+    with $Provider<AppDatabase> {
+  AppDatabaseProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'appDatabaseProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$appDatabaseHash();
+
+  @$internal
+  @override
+  $ProviderElement<AppDatabase> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  AppDatabase create(Ref ref) {
+    return appDatabase(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(AppDatabase value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<AppDatabase>(value),
+    );
+  }
+}
+
+String _$appDatabaseHash() => r'd914b4598838f15faf8faa4d2ab039e12227a392';
+
 @ProviderFor(cartLocalDataSource)
 final cartLocalDataSourceProvider = CartLocalDataSourceProvider._();
 
@@ -55,7 +96,7 @@ final class CartLocalDataSourceProvider
 }
 
 String _$cartLocalDataSourceHash() =>
-    r'396498f5731ee1a02e6a63c7c8976eaaae115d81';
+    r'fe7bfbb4086ea689c34674ef5a29256b6b997a4e';
 
 @ProviderFor(cartRepository)
 final cartRepositoryProvider = CartRepositoryProvider._();

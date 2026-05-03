@@ -1,4 +1,7 @@
 import 'package:ecommerce_app/src/app.dart';
+import 'package:ecommerce_app/src/features/cart/data/cart_repository_provider.dart';
+import 'package:ecommerce_app/src/features/cart/data/local/app_database.dart';
+import 'package:drift/native.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -68,13 +71,21 @@ void main() {
   });
 
   testWidgets('カートアイコンをタップするとカート画面に遷移する', (tester) async {
-    await tester.pumpWidget(const ProviderScope(child: App()));
+    final database = AppDatabase.forTesting(NativeDatabase.memory());
+    addTearDown(database.close);
+
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [appDatabaseProvider.overrideWithValue(database)],
+        child: const App(),
+      ),
+    );
     await tester.pumpAndSettle();
 
     await tester.tap(find.byIcon(Icons.shopping_cart));
     await tester.pumpAndSettle();
 
     expect(find.text('カート'), findsOneWidget);
-    expect(find.text('カートは空です。'), findsNothing);
+    expect(find.text('カートは空です。'), findsOneWidget);
   });
 }
