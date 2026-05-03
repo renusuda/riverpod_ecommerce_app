@@ -56,4 +56,14 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('ブルスケッタプレート'), findsOneWidget);
   });
+
+  testWidgets('検索結果が0件の場合は「商品が見つかりませんでした」が表示される', (tester) async {
+    await tester.pumpWidget(const ProviderScope(child: App()));
+    await tester.pumpAndSettle();
+
+    await tester.enterText(find.byType(TextField), '存在しない商品名');
+    await tester.pumpAndSettle();
+
+    expect(find.text('商品が見つかりませんでした'), findsOneWidget);
+  });
 }

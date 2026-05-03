@@ -40,24 +40,26 @@ class ProductListPage extends HookConsumerWidget {
           Expanded(
             child: AsyncValueWidget(
               asyncValue: productsAsyncValue,
-              data: (products) => ListView.separated(
-                padding: EdgeInsets.only(
-                  bottom: spacing.p48,
-                  left: spacing.p24,
-                  right: spacing.p24,
-                ),
-                itemCount: products.length,
-                separatorBuilder: (_, _) => SizedBox(height: spacing.p32),
-                itemBuilder: (context, index) {
-                  return ProductCard(
-                    product: products[index],
-                    onTap: () => context.goNamed(
-                      AppRoute.product.name,
-                      pathParameters: {'id': products[index].id},
+              data: (products) => products.isEmpty
+                  ? const Center(child: Text('商品が見つかりませんでした'))
+                  : ListView.separated(
+                      padding: EdgeInsets.only(
+                        bottom: spacing.p48,
+                        left: spacing.p24,
+                        right: spacing.p24,
+                      ),
+                      itemCount: products.length,
+                      separatorBuilder: (_, _) => SizedBox(height: spacing.p32),
+                      itemBuilder: (context, index) {
+                        return ProductCard(
+                          product: products[index],
+                          onTap: () => context.goNamed(
+                            AppRoute.product.name,
+                            pathParameters: {'id': products[index].id},
+                          ),
+                        );
+                      },
                     ),
-                  );
-                },
-              ),
             ),
           ),
         ],
