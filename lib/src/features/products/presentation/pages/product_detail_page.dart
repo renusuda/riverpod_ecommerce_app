@@ -1,12 +1,12 @@
 import 'package:ecommerce_app/src/common_widgets/app_card.dart';
 import 'package:ecommerce_app/src/common_widgets/async_value_widget.dart';
 import 'package:ecommerce_app/src/common_widgets/primary_button.dart';
+import 'package:ecommerce_app/src/common_widgets/quantity_stepper.dart';
 import 'package:ecommerce_app/src/extensions/int_extensions.dart';
 import 'package:ecommerce_app/src/features/products/domain/product.dart';
 import 'package:ecommerce_app/src/features/products/presentation/providers/product_detail_provider.dart';
 import 'package:ecommerce_app/src/features/products/presentation/widgets/product_image.dart';
 import 'package:ecommerce_app/src/features/products/presentation/widgets/product_rating_bar.dart';
-import 'package:ecommerce_app/src/features/products/presentation/widgets/quantity_stepper.dart';
 import 'package:ecommerce_app/src/routing/app_route.dart';
 import 'package:ecommerce_app/src/theme/app_theme.dart';
 import 'package:flutter/material.dart';
