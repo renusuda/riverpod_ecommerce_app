@@ -17,7 +17,7 @@ const kTestProducts = [
     description: 'モッツァレラチーズをモチーフにした陶器プレート。おしゃれなテーブルウェアです。',
     imageUrl: 'assets/products/mozzarella-plate.jpg',
     price: 2200,
-    stockQuantity: 5,
+    stockQuantity: 0,
   ),
   Product(
     id: '3',
