@@ -1,14 +1,12 @@
 import 'package:ecommerce_app/src/common_widgets/app_card.dart';
-import 'package:ecommerce_app/src/common_widgets/primary_button.dart';
 import 'package:ecommerce_app/src/common_widgets/quantity_stepper.dart';
 import 'package:ecommerce_app/src/extensions/int_extensions.dart';
 import 'package:ecommerce_app/src/features/cart/presentation/providers/cart_provider.dart';
+import 'package:ecommerce_app/src/features/cart/presentation/widgets/empty_cart_view.dart';
 import 'package:ecommerce_app/src/features/products/presentation/providers/product_detail_provider.dart';
 import 'package:ecommerce_app/src/features/products/presentation/widgets/product_image.dart';
-import 'package:ecommerce_app/src/routing/app_route.dart';
 import 'package:ecommerce_app/src/theme/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class CartPage extends ConsumerWidget {
@@ -28,7 +26,7 @@ class CartPage extends ConsumerWidget {
         centerTitle: true,
       ),
       body: cart.items.isEmpty
-          ? const _EmptyCartView()
+          ? const EmptyCartView()
           : ListView.separated(
               padding: EdgeInsets.symmetric(
                 vertical: spacing.p24,
@@ -119,31 +117,6 @@ class _CartItemCard extends ConsumerWidget {
           ),
         );
       },
-    );
-  }
-}
-
-class _EmptyCartView extends StatelessWidget {
-  const _EmptyCartView();
-
-  @override
-  Widget build(BuildContext context) {
-    final spacing = context.spacing;
-    final textTheme = Theme.of(context).textTheme;
-
-    return Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text('カートは空です。', style: textTheme.titleLarge),
-          SizedBox(height: spacing.p16),
-          PrimaryButton(
-            label: 'ホーム画面に戻る',
-            onPressed: () => context.goNamed(AppRoute.home.name),
-            expand: false,
-          ),
-        ],
-      ),
     );
   }
 }
