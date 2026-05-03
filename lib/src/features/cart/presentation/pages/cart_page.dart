@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/src/common_widgets/app_card.dart';
+import 'package:ecommerce_app/src/common_widgets/async_value_widget.dart';
 import 'package:ecommerce_app/src/features/cart/presentation/providers/cart_provider.dart';
 import 'package:ecommerce_app/src/features/cart/presentation/widgets/cart_item_card.dart';
 import 'package:ecommerce_app/src/features/cart/presentation/widgets/empty_cart_view.dart';
@@ -11,7 +12,7 @@ class CartPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final cart = ref.watch(cartProvider);
+    final cartAsyncValue = ref.watch(cartProvider);
 
     final spacing = context.spacing;
 
@@ -22,25 +23,28 @@ class CartPage extends ConsumerWidget {
         title: const Text('カート'),
         centerTitle: true,
       ),
-      body: cart.items.isEmpty
-          ? const EmptyCartView()
-          : ListView.separated(
-              padding: EdgeInsets.symmetric(
-                vertical: spacing.p24,
-                horizontal: spacing.p24,
+      body: AsyncValueWidget(
+        asyncValue: cartAsyncValue,
+        data: (cart) => cart.items.isEmpty
+            ? const EmptyCartView()
+            : ListView.separated(
+                padding: EdgeInsets.symmetric(
+                  vertical: spacing.p24,
+                  horizontal: spacing.p24,
+                ),
+                itemCount: cart.items.length,
+                separatorBuilder: (_, _) => SizedBox(height: spacing.p12),
+                itemBuilder: (context, index) {
+                  final item = cart.items[index];
+                  return AppCard(
+                    child: CartItemCard(
+                      productId: item.productId,
+                      quantity: item.quantity,
+                    ),
+                  );
+                },
               ),
-              itemCount: cart.items.length,
-              separatorBuilder: (_, _) => SizedBox(height: spacing.p12),
-              itemBuilder: (context, index) {
-                final item = cart.items[index];
-                return AppCard(
-                  child: CartItemCard(
-                    productId: item.productId,
-                    quantity: item.quantity,
-                  ),
-                );
-              },
-            ),
+      ),
     );
   }
 }

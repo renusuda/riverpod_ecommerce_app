@@ -5,7 +5,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'cart_provider.g.dart';
 
 @riverpod
-Cart cart(Ref ref) {
+Future<Cart> cart(Ref ref) async {
   final repository = ref.watch(cartRepositoryProvider);
   return repository.fetchCart();
 }

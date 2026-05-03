@@ -7,7 +7,7 @@ class CartRepository {
 
   final CartLocalDataSource _localDataSource;
 
-  Cart fetchCart() {
+  Future<Cart> fetchCart() {
     return _localDataSource.fetchCart();
   }
 }

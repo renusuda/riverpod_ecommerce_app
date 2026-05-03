@@ -12,8 +12,9 @@ part of 'cart_provider.dart';
 @ProviderFor(cart)
 final cartProvider = CartProvider._();
 
-final class CartProvider extends $FunctionalProvider<Cart, Cart, Cart>
-    with $Provider<Cart> {
+final class CartProvider
+    extends $FunctionalProvider<AsyncValue<Cart>, Cart, FutureOr<Cart>>
+    with $FutureModifier<Cart>, $FutureProvider<Cart> {
   CartProvider._()
     : super(
         from: null,
@@ -30,21 +31,13 @@ final class CartProvider extends $FunctionalProvider<Cart, Cart, Cart>
 
   @$internal
   @override
-  $ProviderElement<Cart> $createElement($ProviderPointer pointer) =>
-      $ProviderElement(pointer);
+  $FutureProviderElement<Cart> $createElement($ProviderPointer pointer) =>
+      $FutureProviderElement(pointer);
 
   @override
-  Cart create(Ref ref) {
+  FutureOr<Cart> create(Ref ref) {
     return cart(ref);
-  }
-
-  /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(Cart value) {
-    return $ProviderOverride(
-      origin: this,
-      providerOverride: $SyncValueProvider<Cart>(value),
-    );
   }
 }
 
-String _$cartHash() => r'45df79eb3c2a0e5aba596de2a6ac679e93405c51';
+String _$cartHash() => r'82b56e72ad9c2a44c069f35c0c568da8196178d3';
