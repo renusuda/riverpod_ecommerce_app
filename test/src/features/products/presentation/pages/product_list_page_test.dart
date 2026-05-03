@@ -66,4 +66,14 @@ void main() {
 
     expect(find.text('商品が見つかりませんでした'), findsOneWidget);
   });
+
+  testWidgets('カートアイコンをタップするとカート画面に遷移する', (tester) async {
+    await tester.pumpWidget(const ProviderScope(child: App()));
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.byIcon(Icons.shopping_cart));
+    await tester.pumpAndSettle();
+
+    expect(find.text('カートは空です。'), findsOneWidget);
+  });
 }
