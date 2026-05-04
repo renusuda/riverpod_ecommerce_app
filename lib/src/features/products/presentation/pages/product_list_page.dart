@@ -1,6 +1,7 @@
 import 'package:ecommerce_app/src/common_widgets/async_value_widget.dart';
 import 'package:ecommerce_app/src/features/products/presentation/providers/products_provider.dart';
 import 'package:ecommerce_app/src/features/products/presentation/widgets/product_card.dart';
+import 'package:ecommerce_app/src/features/products/presentation/widgets/app_bar_menu_button.dart';
 import 'package:ecommerce_app/src/features/products/presentation/widgets/cart_icon_button.dart';
 import 'package:ecommerce_app/src/features/products/presentation/widgets/product_search_bar.dart';
 import 'package:ecommerce_app/src/routing/app_route.dart';
@@ -28,20 +29,7 @@ class ProductListPage extends HookConsumerWidget {
         foregroundColor: Colors.white,
         title: const Text('ショップ'),
         centerTitle: false,
-        actions: [
-          const CartIconButton(),
-          PopupMenuButton<String>(
-            icon: const Icon(Icons.more_vert),
-            onSelected: (value) {
-              if (value == 'signIn') {
-                context.goNamed(AppRoute.signIn.name);
-              }
-            },
-            itemBuilder: (context) => [
-              const PopupMenuItem(value: 'signIn', child: Text('ログイン')),
-            ],
-          ),
-        ],
+        actions: [const CartIconButton(), const AppBarMenuButton()],
       ),
       body: Column(
         children: [
