@@ -1,3 +1,6 @@
+import 'package:ecommerce_app/src/common_widgets/app_card.dart';
+import 'package:ecommerce_app/src/common_widgets/primary_button.dart';
+import 'package:ecommerce_app/src/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -5,6 +8,8 @@ class SignUpPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final spacing = context.spacing;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF1F1F1F),
@@ -12,7 +17,44 @@ class SignUpPage extends StatelessWidget {
         title: const Text('アカウント作成'),
         centerTitle: true,
       ),
-      body: const Center(child: Text('アカウント作成画面')),
+      body: Padding(
+        padding: EdgeInsets.all(spacing.p24),
+        child: AppCard(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(
+                  hintText: 'メールアドレス',
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey.shade400),
+                  ),
+                ),
+              ),
+              SizedBox(height: spacing.p16),
+              TextField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  hintText: 'パスワード（8文字以上）',
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey.shade400),
+                  ),
+                ),
+              ),
+              SizedBox(height: spacing.p24),
+              PrimaryButton(label: 'アカウントを作成', onPressed: () {}),
+              TextButton(
+                onPressed: () {},
+                child: const Text(
+                  'アカウントをお持ちですか？ ログイン',
+                  style: TextStyle(color: Color(0xFF5C4DB1)),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
