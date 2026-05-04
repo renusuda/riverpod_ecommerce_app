@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/src/common_widgets/app_card.dart';
 import 'package:ecommerce_app/src/common_widgets/primary_button.dart';
+import 'package:ecommerce_app/src/features/authentication/presentation/widgets/auth_text_button.dart';
 import 'package:ecommerce_app/src/features/authentication/presentation/widgets/email_text_field.dart';
 import 'package:ecommerce_app/src/features/authentication/presentation/widgets/password_text_field.dart';
 import 'package:ecommerce_app/src/routing/app_route.dart';
@@ -33,14 +34,9 @@ class SignUpPage extends StatelessWidget {
               SizedBox(height: spacing.p24),
               PrimaryButton(label: 'アカウントを作成', onPressed: () {}),
               SizedBox(height: spacing.p24),
-              TextButton(
-                onPressed: () {
-                  context.goNamed(AppRoute.signIn.name);
-                },
-                child: const Text(
-                  'アカウントをお持ちですか？ ログイン',
-                  style: TextStyle(color: Color(0xFF5C4DB1)),
-                ),
+              AuthTextButton(
+                label: 'アカウントをお持ちですか？ ログイン',
+                onPressed: () => context.goNamed(AppRoute.signIn.name),
               ),
             ],
           ),
