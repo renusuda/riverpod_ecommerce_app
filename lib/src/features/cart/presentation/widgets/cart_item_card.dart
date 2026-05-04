@@ -1,6 +1,7 @@
 import 'package:ecommerce_app/src/common_widgets/quantity_stepper.dart';
 import 'package:ecommerce_app/src/extensions/int_extensions.dart';
 import 'package:ecommerce_app/src/features/cart/presentation/providers/cart_product_detail_provider.dart';
+import 'package:ecommerce_app/src/features/cart/presentation/providers/cart_provider.dart';
 import 'package:ecommerce_app/src/features/products/presentation/widgets/product_image.dart';
 import 'package:ecommerce_app/src/theme/app_theme.dart';
 import 'package:flutter/material.dart';
@@ -50,8 +51,11 @@ class CartItemCard extends ConsumerWidget {
                       children: [
                         QuantityStepper(
                           quantity: quantity,
-                          onIncrement: () {},
-                          onDecrement: () {},
+                          onIncrement: () =>
+                              ref.read(cartProvider.notifier).add(productId, 1),
+                          onDecrement: () => ref
+                              .read(cartProvider.notifier)
+                              .add(productId, -1),
                           maxQuantity: product.stockQuantity,
                         ),
                         SizedBox(width: spacing.p8),
