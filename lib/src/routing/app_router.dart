@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/src/features/authentication/presentation/pages/sign_in_page.dart';
 import 'package:ecommerce_app/src/features/authentication/presentation/pages/sign_up_page.dart';
 import 'package:ecommerce_app/src/features/cart/presentation/pages/cart_page.dart';
 import 'package:ecommerce_app/src/features/products/presentation/pages/product_detail_page.dart';
@@ -37,6 +38,12 @@ GoRouter goRouter(Ref ref) {
             name: AppRoute.signUp.name,
             pageBuilder: (context, state) =>
                 MaterialPage(fullscreenDialog: true, child: SignUpPage()),
+          ),
+          GoRoute(
+            path: 'sign-in',
+            name: AppRoute.signIn.name,
+            pageBuilder: (context, state) =>
+                MaterialPage(fullscreenDialog: true, child: SignInPage()),
           ),
         ],
       ),

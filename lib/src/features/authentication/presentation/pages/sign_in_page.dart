@@ -5,8 +5,8 @@ import 'package:ecommerce_app/src/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class SignUpPage extends StatelessWidget {
-  const SignUpPage({super.key});
+class SignInPage extends StatelessWidget {
+  const SignInPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class SignUpPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: const Color(0xFF1F1F1F),
         foregroundColor: Colors.white,
-        title: const Text('登録する'),
+        title: const Text('ログインする'),
         centerTitle: true,
       ),
       body: Padding(
@@ -38,21 +38,21 @@ class SignUpPage extends StatelessWidget {
               TextField(
                 obscureText: true,
                 decoration: InputDecoration(
-                  hintText: 'パスワード（8文字以上）',
+                  hintText: 'パスワード',
                   enabledBorder: UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.grey.shade400),
                   ),
                 ),
               ),
               SizedBox(height: spacing.p24),
-              PrimaryButton(label: 'アカウントを作成', onPressed: () {}),
+              PrimaryButton(label: 'ログイン', onPressed: () {}),
               SizedBox(height: spacing.p24),
               TextButton(
                 onPressed: () {
-                  context.goNamed(AppRoute.signIn.name);
+                  context.goNamed(AppRoute.signUp.name);
                 },
                 child: const Text(
-                  'アカウントをお持ちですか？ ログイン',
+                  'アカウントをお持ちでないですか？ 登録',
                   style: TextStyle(color: Color(0xFF5C4DB1)),
                 ),
               ),
