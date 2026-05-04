@@ -28,7 +28,20 @@ class ProductListPage extends HookConsumerWidget {
         foregroundColor: Colors.white,
         title: const Text('ショップ'),
         centerTitle: false,
-        actions: [const CartIconButton()],
+        actions: [
+          const CartIconButton(),
+          PopupMenuButton<String>(
+            icon: const Icon(Icons.more_vert),
+            onSelected: (value) {
+              if (value == 'signIn') {
+                context.goNamed(AppRoute.signIn.name);
+              }
+            },
+            itemBuilder: (context) => [
+              const PopupMenuItem(value: 'signIn', child: Text('ログイン')),
+            ],
+          ),
+        ],
       ),
       body: Column(
         children: [
