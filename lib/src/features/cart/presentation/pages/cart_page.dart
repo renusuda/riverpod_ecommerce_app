@@ -1,6 +1,9 @@
 import 'package:ecommerce_app/src/common_widgets/app_card.dart';
 import 'package:ecommerce_app/src/common_widgets/async_value_widget.dart';
+import 'package:ecommerce_app/src/common_widgets/primary_button.dart';
+import 'package:ecommerce_app/src/extensions/int_extensions.dart';
 import 'package:ecommerce_app/src/features/cart/presentation/providers/cart_provider.dart';
+import 'package:ecommerce_app/src/features/cart/presentation/providers/cart_total_provider.dart';
 import 'package:ecommerce_app/src/features/cart/presentation/widgets/cart_item_card.dart';
 import 'package:ecommerce_app/src/features/cart/presentation/widgets/empty_cart_view.dart';
 import 'package:ecommerce_app/src/theme/app_theme.dart';
@@ -13,8 +16,10 @@ class CartPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final cartAsyncValue = ref.watch(cartProvider);
+    final cartTotalAsyncValue = ref.watch(cartTotalProvider);
 
     final spacing = context.spacing;
+    final textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
       appBar: AppBar(
@@ -27,22 +32,48 @@ class CartPage extends ConsumerWidget {
         asyncValue: cartAsyncValue,
         data: (cart) => cart.items.isEmpty
             ? const EmptyCartView()
-            : ListView.separated(
-                padding: EdgeInsets.symmetric(
-                  vertical: spacing.p24,
-                  horizontal: spacing.p24,
-                ),
-                itemCount: cart.items.length,
-                separatorBuilder: (_, _) => SizedBox(height: spacing.p12),
-                itemBuilder: (context, index) {
-                  final item = cart.items[index];
-                  return AppCard(
-                    child: CartItemCard(
-                      productId: item.productId,
-                      quantity: item.quantity,
+            : Column(
+                children: [
+                  Expanded(
+                    child: ListView.separated(
+                      padding: EdgeInsets.symmetric(
+                        vertical: spacing.p24,
+                        horizontal: spacing.p24,
+                      ),
+                      itemCount: cart.items.length,
+                      separatorBuilder: (_, _) => SizedBox(height: spacing.p12),
+                      itemBuilder: (context, index) {
+                        final item = cart.items[index];
+                        return AppCard(
+                          child: CartItemCard(
+                            productId: item.productId,
+                            quantity: item.quantity,
+                          ),
+                        );
+                      },
                     ),
-                  );
-                },
+                  ),
+                  const Divider(height: 1),
+                  ColoredBox(
+                    color: Colors.white,
+                    child: Padding(
+                      padding: EdgeInsets.all(spacing.p24),
+                      child: Column(
+                        children: [
+                          AsyncValueWidget(
+                            asyncValue: cartTotalAsyncValue,
+                            data: (total) => Text(
+                              '合計: ¥${total.commaSeparated}',
+                              style: textTheme.titleLarge,
+                            ),
+                          ),
+                          SizedBox(height: spacing.p16),
+                          PrimaryButton(label: '購入する', onPressed: () {}),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
       ),
     );
