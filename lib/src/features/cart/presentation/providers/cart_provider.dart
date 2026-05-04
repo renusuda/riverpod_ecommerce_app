@@ -7,18 +7,15 @@ part 'cart_provider.g.dart';
 @riverpod
 class Cart extends _$Cart {
   @override
-  Future<domain.Cart> build() async {
-    final repository = ref.watch(cartRepositoryProvider);
-    return repository.fetchCart();
+  Stream<domain.Cart> build() {
+    return ref.watch(cartRepositoryProvider).watchCart();
   }
 
   Future<void> add(String productId, int quantity) async {
     await ref.read(cartRepositoryProvider).addToCart(productId, quantity);
-    if (ref.mounted) ref.invalidateSelf();
   }
 
   Future<void> remove(String productId) async {
     await ref.read(cartRepositoryProvider).removeFromCart(productId);
-    ref.invalidateSelf();
   }
 }

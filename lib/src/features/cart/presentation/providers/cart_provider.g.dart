@@ -12,7 +12,7 @@ part of 'cart_provider.dart';
 @ProviderFor(Cart)
 final cartProvider = CartProvider._();
 
-final class CartProvider extends $AsyncNotifierProvider<Cart, domain.Cart> {
+final class CartProvider extends $StreamNotifierProvider<Cart, domain.Cart> {
   CartProvider._()
     : super(
         from: null,
@@ -32,10 +32,10 @@ final class CartProvider extends $AsyncNotifierProvider<Cart, domain.Cart> {
   Cart create() => Cart();
 }
 
-String _$cartHash() => r'b6f8e0eeba474314a9ef9738b59cde4d2aace174';
+String _$cartHash() => r'4807ce00aff14cd902b50d39c773c9c6cd217227';
 
-abstract class _$Cart extends $AsyncNotifier<domain.Cart> {
-  FutureOr<domain.Cart> build();
+abstract class _$Cart extends $StreamNotifier<domain.Cart> {
+  Stream<domain.Cart> build();
   @$mustCallSuper
   @override
   void runBuild() {

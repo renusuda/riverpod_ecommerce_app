@@ -18,4 +18,8 @@ class CartRepository {
   Future<void> removeFromCart(String productId) {
     return _localDataSource.removeFromCart(productId);
   }
+
+  Stream<Cart> watchCart() {
+    return _localDataSource.watchCart();
+  }
 }

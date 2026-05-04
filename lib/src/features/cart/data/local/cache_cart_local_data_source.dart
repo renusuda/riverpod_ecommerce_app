@@ -47,4 +47,17 @@ class CacheCartLocalDataSource implements CartLocalDataSource {
       _database.cartEntries,
     )..where((t) => t.productId.equals(productId))).go();
   }
+
+  @override
+  Stream<Cart> watchCart() {
+    return _database.select(_database.cartEntries).watch().map((entries) {
+      final items = entries
+          .map(
+            (entry) =>
+                CartItem(productId: entry.productId, quantity: entry.quantity),
+          )
+          .toList(growable: false);
+      return Cart(items: items);
+    });
+  }
 }

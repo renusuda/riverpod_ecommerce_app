@@ -52,7 +52,6 @@ void main() {
 
   testWidgets('カートアイコンをタップするとカート画面に遷移する', (tester) async {
     final database = AppDatabase.forTesting(NativeDatabase.memory());
-    addTearDown(database.close);
 
     await tester.pumpWidget(
       ProviderScope(
@@ -75,6 +74,10 @@ void main() {
 
     expect(find.text('カート'), findsOneWidget);
     expect(find.text('カートは空です。'), findsOneWidget);
+
+    await tester.pumpWidget(const SizedBox.shrink());
+    await tester.pumpAndSettle();
+    await database.close();
   });
 
   testWidgets('詳細画面の数量ステッパーが正しく動作する', (tester) async {
