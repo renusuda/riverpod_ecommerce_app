@@ -5,14 +5,13 @@ import 'package:ecommerce_app/src/common_widgets/quantity_stepper.dart';
 import 'package:ecommerce_app/src/extensions/int_extensions.dart';
 import 'package:ecommerce_app/src/features/cart/presentation/providers/cart_provider.dart';
 import 'package:ecommerce_app/src/features/products/domain/product.dart';
+import 'package:ecommerce_app/src/features/products/presentation/widgets/cart_icon_button.dart';
 import 'package:ecommerce_app/src/features/products/presentation/providers/product_detail_provider.dart';
 import 'package:ecommerce_app/src/features/products/presentation/widgets/product_image.dart';
 import 'package:ecommerce_app/src/features/products/presentation/widgets/product_rating_bar.dart';
-import 'package:ecommerce_app/src/routing/app_route.dart';
 import 'package:ecommerce_app/src/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ProductDetailPage extends ConsumerWidget {
@@ -30,12 +29,7 @@ class ProductDetailPage extends ConsumerWidget {
         foregroundColor: Colors.white,
         title: const Text('ショップ'),
         centerTitle: false,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.shopping_cart),
-            onPressed: () => context.goNamed(AppRoute.cart.name),
-          ),
-        ],
+        actions: [const CartIconButton()],
       ),
       body: AsyncValueWidget(
         asyncValue: productDetailAsyncValue,
