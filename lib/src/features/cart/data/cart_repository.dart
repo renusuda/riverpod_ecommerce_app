@@ -14,4 +14,8 @@ class CartRepository {
   Future<void> addToCart(String productId, int quantity) {
     return _localDataSource.addToCart(productId, quantity);
   }
+
+  Future<void> removeFromCart(String productId) {
+    return _localDataSource.removeFromCart(productId);
+  }
 }

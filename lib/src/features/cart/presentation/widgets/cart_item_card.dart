@@ -59,7 +59,14 @@ class CartItemCard extends ConsumerWidget {
                           maxQuantity: product.stockQuantity,
                         ),
                         SizedBox(width: spacing.p8),
-                        const Icon(Icons.delete, color: Color(0xFFD62727)),
+                        IconButton(
+                          icon: const Icon(
+                            Icons.delete,
+                            color: Color(0xFFD62727),
+                          ),
+                          onPressed: () =>
+                              ref.read(cartProvider.notifier).remove(productId),
+                        ),
                       ],
                     ),
                   ),

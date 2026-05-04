@@ -16,4 +16,9 @@ class Cart extends _$Cart {
     await ref.read(cartRepositoryProvider).addToCart(productId, quantity);
     ref.invalidateSelf();
   }
+
+  Future<void> remove(String productId) async {
+    await ref.read(cartRepositoryProvider).removeFromCart(productId);
+    ref.invalidateSelf();
+  }
 }

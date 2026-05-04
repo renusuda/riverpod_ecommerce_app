@@ -4,4 +4,6 @@ abstract interface class CartLocalDataSource {
   Future<Cart> fetchCart();
 
   Future<void> addToCart(String productId, int quantity);
+
+  Future<void> removeFromCart(String productId);
 }

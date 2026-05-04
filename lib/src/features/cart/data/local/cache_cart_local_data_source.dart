@@ -40,4 +40,11 @@ class CacheCartLocalDataSource implements CartLocalDataSource {
           ),
         );
   }
+
+  @override
+  Future<void> removeFromCart(String productId) async {
+    await (_database.delete(
+      _database.cartEntries,
+    )..where((t) => t.productId.equals(productId))).go();
+  }
 }
