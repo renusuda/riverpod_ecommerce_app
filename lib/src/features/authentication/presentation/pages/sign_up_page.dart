@@ -44,6 +44,7 @@ class SignUpPage extends StatelessWidget {
               ),
               SizedBox(height: spacing.p24),
               PrimaryButton(label: 'アカウントを作成', onPressed: () {}),
+              SizedBox(height: spacing.p24),
               TextButton(
                 onPressed: () {},
                 child: const Text(
