@@ -3,6 +3,7 @@ import 'package:ecommerce_app/src/common_widgets/async_value_widget.dart';
 import 'package:ecommerce_app/src/common_widgets/primary_button.dart';
 import 'package:ecommerce_app/src/common_widgets/quantity_stepper.dart';
 import 'package:ecommerce_app/src/extensions/int_extensions.dart';
+import 'package:ecommerce_app/src/features/cart/presentation/providers/cart_provider.dart';
 import 'package:ecommerce_app/src/features/products/domain/product.dart';
 import 'package:ecommerce_app/src/features/products/presentation/providers/product_detail_provider.dart';
 import 'package:ecommerce_app/src/features/products/presentation/widgets/product_image.dart';
@@ -44,13 +45,13 @@ class ProductDetailPage extends ConsumerWidget {
   }
 }
 
-class _ProductDetailView extends HookWidget {
+class _ProductDetailView extends HookConsumerWidget {
   const _ProductDetailView({required this.product});
 
   final Product product;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final quantity = useState(1);
     final spacing = context.spacing;
     final textTheme = Theme.of(context).textTheme;
@@ -101,7 +102,11 @@ class _ProductDetailView extends HookWidget {
                 const Divider(height: 32),
                 PrimaryButton(
                   label: product.stockQuantity == 0 ? '在庫切れ' : 'カートに追加',
-                  onPressed: product.stockQuantity == 0 ? null : () {},
+                  onPressed: product.stockQuantity == 0
+                      ? null
+                      : () => ref
+                            .read(cartProvider.notifier)
+                            .add(product.id, quantity.value),
                 ),
               ],
             ),

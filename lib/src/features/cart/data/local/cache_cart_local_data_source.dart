@@ -1,3 +1,4 @@
+import 'package:drift/drift.dart';
 import 'package:ecommerce_app/src/features/cart/data/local/app_database.dart';
 import 'package:ecommerce_app/src/features/cart/data/local/cart_local_data_source.dart';
 import 'package:ecommerce_app/src/features/cart/domain/cart.dart';
@@ -20,5 +21,23 @@ class CacheCartLocalDataSource implements CartLocalDataSource {
         .toList(growable: false);
 
     return Cart(items: items);
+  }
+
+  @override
+  Future<void> addToCart(String productId, int quantity) async {
+    final existing = await (_database.select(
+      _database.cartEntries,
+    )..where((t) => t.productId.equals(productId))).getSingleOrNull();
+
+    final newQuantity = (existing?.quantity ?? 0) + quantity;
+
+    await _database
+        .into(_database.cartEntries)
+        .insertOnConflictUpdate(
+          CartEntriesCompanion(
+            productId: Value(productId),
+            quantity: Value(newQuantity),
+          ),
+        );
   }
 }

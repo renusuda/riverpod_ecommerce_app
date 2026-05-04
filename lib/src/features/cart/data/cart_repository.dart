@@ -10,4 +10,8 @@ class CartRepository {
   Future<Cart> fetchCart() {
     return _localDataSource.fetchCart();
   }
+
+  Future<void> addToCart(String productId, int quantity) {
+    return _localDataSource.addToCart(productId, quantity);
+  }
 }

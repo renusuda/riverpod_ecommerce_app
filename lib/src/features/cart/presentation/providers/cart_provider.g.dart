@@ -9,12 +9,10 @@ part of 'cart_provider.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
 
-@ProviderFor(cart)
+@ProviderFor(Cart)
 final cartProvider = CartProvider._();
 
-final class CartProvider
-    extends $FunctionalProvider<AsyncValue<Cart>, Cart, FutureOr<Cart>>
-    with $FutureModifier<Cart>, $FutureProvider<Cart> {
+final class CartProvider extends $AsyncNotifierProvider<Cart, domain.Cart> {
   CartProvider._()
     : super(
         from: null,
@@ -31,13 +29,25 @@ final class CartProvider
 
   @$internal
   @override
-  $FutureProviderElement<Cart> $createElement($ProviderPointer pointer) =>
-      $FutureProviderElement(pointer);
-
-  @override
-  FutureOr<Cart> create(Ref ref) {
-    return cart(ref);
-  }
+  Cart create() => Cart();
 }
 
-String _$cartHash() => r'82b56e72ad9c2a44c069f35c0c568da8196178d3';
+String _$cartHash() => r'9bbe64f36a0a7505aa62b080c0894d2b8df4cdf6';
+
+abstract class _$Cart extends $AsyncNotifier<domain.Cart> {
+  FutureOr<domain.Cart> build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final ref = this.ref as $Ref<AsyncValue<domain.Cart>, domain.Cart>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<domain.Cart>, domain.Cart>,
+              AsyncValue<domain.Cart>,
+              Object?,
+              Object?
+            >;
+    element.handleCreate(ref, build);
+  }
+}
