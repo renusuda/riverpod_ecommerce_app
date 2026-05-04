@@ -14,7 +14,7 @@ class Cart extends _$Cart {
 
   Future<void> add(String productId, int quantity) async {
     await ref.read(cartRepositoryProvider).addToCart(productId, quantity);
-    ref.invalidateSelf();
+    if (ref.mounted) ref.invalidateSelf();
   }
 
   Future<void> remove(String productId) async {
