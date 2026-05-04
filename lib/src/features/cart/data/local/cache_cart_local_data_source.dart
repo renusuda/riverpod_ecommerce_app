@@ -11,19 +11,6 @@ class CacheCartLocalDataSource implements CartLocalDataSource {
   final AppDatabase _database;
 
   @override
-  Future<Cart> fetchCart() async {
-    final entries = await _database.select(_database.cartEntries).get();
-    final items = entries
-        .map(
-          (entry) =>
-              CartItem(productId: entry.productId, quantity: entry.quantity),
-        )
-        .toList(growable: false);
-
-    return Cart(items: items);
-  }
-
-  @override
   Future<void> addToCart(String productId, int quantity) async {
     final existing = await (_database.select(
       _database.cartEntries,
