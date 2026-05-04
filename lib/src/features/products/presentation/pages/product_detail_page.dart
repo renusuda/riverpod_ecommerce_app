@@ -5,6 +5,7 @@ import 'package:ecommerce_app/src/common_widgets/quantity_stepper.dart';
 import 'package:ecommerce_app/src/extensions/int_extensions.dart';
 import 'package:ecommerce_app/src/features/cart/presentation/providers/cart_provider.dart';
 import 'package:ecommerce_app/src/features/products/domain/product.dart';
+import 'package:ecommerce_app/src/features/products/presentation/widgets/app_bar_menu_button.dart';
 import 'package:ecommerce_app/src/features/products/presentation/widgets/cart_icon_button.dart';
 import 'package:ecommerce_app/src/features/products/presentation/providers/product_detail_provider.dart';
 import 'package:ecommerce_app/src/features/products/presentation/widgets/product_image.dart';
@@ -29,7 +30,7 @@ class ProductDetailPage extends ConsumerWidget {
         foregroundColor: Colors.white,
         title: const Text('ショップ'),
         centerTitle: false,
-        actions: [const CartIconButton()],
+        actions: [const CartIconButton(), const AppBarMenuButton()],
       ),
       body: AsyncValueWidget(
         asyncValue: productDetailAsyncValue,
