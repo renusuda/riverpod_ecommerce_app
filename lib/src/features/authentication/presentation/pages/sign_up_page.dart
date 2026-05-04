@@ -14,7 +14,7 @@ class SignUpPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: const Color(0xFF1F1F1F),
         foregroundColor: Colors.white,
-        title: const Text('アカウント作成'),
+        title: const Text('登録する'),
         centerTitle: true,
       ),
       body: Padding(
