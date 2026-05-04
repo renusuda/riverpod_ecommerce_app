@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/src/features/cart/presentation/providers/cart_provider.dart';
+import 'package:ecommerce_app/src/features/cart/presentation/providers/cart_item_count_provider.dart';
 import 'package:ecommerce_app/src/routing/app_route.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -9,9 +9,7 @@ class CartIconButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final cartItemCount = ref
-        .watch(cartProvider)
-        .maybeWhen(data: (cart) => cart.items.length, orElse: () => 0);
+    final cartItemCount = ref.watch(cartItemCountProvider);
 
     return IconButton(
       icon: Badge.count(
