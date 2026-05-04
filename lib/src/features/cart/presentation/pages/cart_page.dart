@@ -1,4 +1,6 @@
 import 'package:ecommerce_app/src/common_widgets/app_card.dart';
+import 'package:go_router/go_router.dart';
+import 'package:ecommerce_app/src/routing/app_route.dart';
 import 'package:ecommerce_app/src/common_widgets/async_value_widget.dart';
 import 'package:ecommerce_app/src/common_widgets/primary_button.dart';
 import 'package:ecommerce_app/src/extensions/int_extensions.dart';
@@ -68,7 +70,11 @@ class CartPage extends ConsumerWidget {
                             ),
                           ),
                           SizedBox(height: spacing.p16),
-                          PrimaryButton(label: '購入する', onPressed: () {}),
+                          PrimaryButton(
+                            label: '購入する',
+                            onPressed: () =>
+                                context.goNamed(AppRoute.signUp.name),
+                          ),
                         ],
                       ),
                     ),
