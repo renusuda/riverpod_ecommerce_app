@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/src/common_widgets/app_card.dart';
 import 'package:ecommerce_app/src/common_widgets/primary_button.dart';
+import 'package:ecommerce_app/src/extensions/async_value_ui.dart';
 import 'package:ecommerce_app/src/features/authentication/presentation/providers/sign_up_provider.dart';
 import 'package:ecommerce_app/src/features/authentication/presentation/widgets/auth_text_button.dart';
 import 'package:ecommerce_app/src/features/authentication/presentation/widgets/email_text_field.dart';
@@ -23,23 +24,10 @@ class SignUpPage extends HookConsumerWidget {
     final passwordController = useTextEditingController();
     final formKey = useMemoized(() => GlobalKey<FormState>());
 
-    ref.listen(signUpProvider, (previous, next) {
-      if (next.hasError) {
-        showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-            title: const Text('エラー'),
-            content: Text(next.error.toString()),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.of(context).pop(),
-                child: const Text('OK'),
-              ),
-            ],
-          ),
-        );
-      }
-    });
+    ref.listen(
+      signUpProvider,
+      (previous, next) => next.showAlertDialogOnError(context),
+    );
 
     return Scaffold(
       appBar: AppBar(
