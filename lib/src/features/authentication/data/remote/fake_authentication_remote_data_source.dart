@@ -17,13 +17,7 @@ class FakeAuthenticationRemoteDataSource
       throw EmailAlreadyInUseException();
     }
     _users[email] = password;
-    final user = FakeAppUser(
-      uid: email.split('').reversed.join(),
-      email: email,
-      password: password,
-    );
-    _currentUser = user;
-    _authenticationState.add(user);
+    _setCurrentUser(email: email, password: password);
   }
 
   @override
@@ -36,6 +30,10 @@ class FakeAuthenticationRemoteDataSource
     if (registeredPassword != password) {
       throw WrongPasswordException();
     }
+    _setCurrentUser(email: email, password: password);
+  }
+
+  void _setCurrentUser({required String email, required String password}) {
     final user = FakeAppUser(
       uid: email.split('').reversed.join(),
       email: email,
