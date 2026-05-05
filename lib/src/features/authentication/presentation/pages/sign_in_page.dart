@@ -3,6 +3,7 @@ import 'package:ecommerce_app/src/common_widgets/primary_button.dart';
 import 'package:ecommerce_app/src/features/authentication/presentation/widgets/auth_text_button.dart';
 import 'package:ecommerce_app/src/features/authentication/presentation/widgets/email_text_field.dart';
 import 'package:ecommerce_app/src/features/authentication/presentation/widgets/password_text_field.dart';
+import 'package:ecommerce_app/src/features/authentication/utils/validators.dart';
 import 'package:ecommerce_app/src/routing/app_route.dart';
 import 'package:ecommerce_app/src/theme/app_theme.dart';
 import 'package:flutter/material.dart';
@@ -39,17 +40,7 @@ class SignInPage extends HookConsumerWidget {
               children: [
                 EmailTextField(
                   controller: emailController,
-                  validator: (value) {
-                    if (value == null || value.trim().isEmpty) {
-                      return 'メールアドレスを入力してください';
-                    }
-                    if (!RegExp(
-                      r'^[^@\s]+@[^@\s]+\.[^@\s]+$',
-                    ).hasMatch(value)) {
-                      return '正しいメールアドレスを入力してください';
-                    }
-                    return null;
-                  },
+                  validator: validateEmail,
                 ),
                 SizedBox(height: spacing.p16),
                 PasswordTextField(
