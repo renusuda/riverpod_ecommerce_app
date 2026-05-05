@@ -127,12 +127,38 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('アカウント'), findsOneWidget);
-    expect(find.text('項目'), findsOneWidget);
-    expect(find.text('値'), findsOneWidget);
-    expect(find.text('uid'), findsOneWidget);
+    expect(find.text('ログアウト'), findsOneWidget);
+    expect(find.text('ID'), findsOneWidget);
     expect(find.text('moc.tset@tset'), findsOneWidget);
     expect(find.text('メールアドレス'), findsOneWidget);
     expect(find.text('test@test.com'), findsOneWidget);
+  });
+
+  testWidgets('アカウント画面からログアウトするとホーム画面に戻る', (tester) async {
+    await tester.pumpWidget(const ProviderScope(child: App()));
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.byIcon(Icons.more_vert));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('ログイン'));
+    await tester.pumpAndSettle();
+
+    final fields = find.byType(TextFormField);
+    await tester.enterText(fields.at(0), 'test@test.com');
+    await tester.enterText(fields.at(1), 'password');
+    await tester.tap(find.widgetWithText(ElevatedButton, 'ログイン'));
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.byIcon(Icons.more_vert));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('アカウント'));
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('ログアウト'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('ショップ'), findsOneWidget);
+    expect(find.text('ブルスケッタプレート'), findsOneWidget);
   });
 
   testWidgets('メニューからログイン画面に遷移する', (tester) async {
