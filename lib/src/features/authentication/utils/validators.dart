@@ -7,3 +7,10 @@ String? validateEmail(String? value) {
   }
   return null;
 }
+
+String? validatePasswordNotEmpty(String? value) {
+  if (value == null || value.trim().isEmpty) {
+    return 'パスワードを入力してください';
+  }
+  return null;
+}

@@ -46,12 +46,7 @@ class SignInPage extends HookConsumerWidget {
                 PasswordTextField(
                   hintText: 'パスワード',
                   controller: passwordController,
-                  validator: (value) {
-                    if (value == null || value.trim().isEmpty) {
-                      return 'パスワードを入力してください';
-                    }
-                    return null;
-                  },
+                  validator: validatePasswordNotEmpty,
                 ),
                 SizedBox(height: spacing.p24),
                 PrimaryButton(

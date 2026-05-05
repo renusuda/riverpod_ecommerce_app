@@ -48,10 +48,9 @@ class SignUpPage extends HookConsumerWidget {
                   hintText: 'パスワード（8文字以上）',
                   controller: passwordController,
                   validator: (value) {
-                    if (value == null || value.trim().isEmpty) {
-                      return 'パスワードを入力してください';
-                    }
-                    if (value.length < 8) {
+                    final emptyError = validatePasswordNotEmpty(value);
+                    if (emptyError != null) return emptyError;
+                    if (value!.length < 8) {
                       return 'パスワードは8文字以上で入力してください';
                     }
                     return null;
