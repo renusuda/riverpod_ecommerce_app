@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:ecommerce_app/src/features/authentication/data/remote/authentication_remote_data_source.dart';
+import 'package:ecommerce_app/src/exceptions/app_exception.dart';
 import 'package:ecommerce_app/src/features/authentication/domain/fake_app_user.dart';
 
 class FakeAuthenticationRemoteDataSource
@@ -14,6 +15,9 @@ class FakeAuthenticationRemoteDataSource
     required String email,
     required String password,
   }) async {
+    if (_users.containsKey(email)) {
+      throw EmailAlreadyInUseException();
+    }
     _users[email] = password;
     final user = FakeAppUser(
       uid: email.split('').reversed.join(),

@@ -23,6 +23,24 @@ class SignUpPage extends HookConsumerWidget {
     final passwordController = useTextEditingController();
     final formKey = useMemoized(() => GlobalKey<FormState>());
 
+    ref.listen(signUpProvider, (previous, next) {
+      if (next.hasError) {
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: const Text('エラー'),
+            content: Text(next.error.toString()),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(),
+                child: const Text('OK'),
+              ),
+            ],
+          ),
+        );
+      }
+    });
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF1F1F1F),
