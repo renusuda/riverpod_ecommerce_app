@@ -7,6 +7,7 @@ class PrimaryButton extends StatelessWidget {
     required this.label,
     this.onPressed,
     this.expand = true,
+    this.isLoading = false,
   });
 
   final String label;
@@ -14,6 +15,8 @@ class PrimaryButton extends StatelessWidget {
   final VoidCallback? onPressed;
 
   final bool expand;
+
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -34,13 +37,15 @@ class PrimaryButton extends StatelessWidget {
             horizontal: spacing.p32,
           ),
         ),
-        child: Text(
-          label,
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        child: isLoading
+            ? const CircularProgressIndicator(color: Colors.white)
+            : Text(
+                label,
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
       ),
     );
   }
