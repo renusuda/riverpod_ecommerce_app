@@ -16,6 +16,10 @@ class AuthenticationRepository {
     return _remoteDataSource.signIn(email: email, password: password);
   }
 
+  Future<void> signOut() {
+    return _remoteDataSource.signOut();
+  }
+
   AppUser? get currentUser => _remoteDataSource.currentUser;
 
   Stream<AppUser?> authenticationStateChanges() {

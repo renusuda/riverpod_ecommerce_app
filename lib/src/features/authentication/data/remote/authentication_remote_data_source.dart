@@ -5,6 +5,8 @@ abstract interface class AuthenticationRemoteDataSource {
 
   Future<void> signIn({required String email, required String password});
 
+  Future<void> signOut();
+
   AppUser? get currentUser;
 
   Stream<AppUser?> authenticationStateChanges();

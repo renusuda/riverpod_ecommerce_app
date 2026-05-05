@@ -33,6 +33,12 @@ class FakeAuthenticationRemoteDataSource
     _setCurrentUser(email: email, password: password);
   }
 
+  @override
+  Future<void> signOut() async {
+    _currentUser = null;
+    _authenticationState.add(null);
+  }
+
   void _setCurrentUser({required String email, required String password}) {
     final user = FakeAppUser(
       uid: email.split('').reversed.join(),

@@ -9,6 +9,8 @@ class AccountPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final spacing = context.spacing;
+    final textTheme = Theme.of(context).textTheme;
+
     final authenticationRepository = ref.watch(
       authenticationRepositoryProvider,
     );
@@ -21,6 +23,16 @@ class AccountPage extends ConsumerWidget {
         foregroundColor: Colors.white,
         title: const Text('アカウント'),
         centerTitle: true,
+        actions: [
+          TextButton(
+            onPressed: () =>
+                ref.read(authenticationRepositoryProvider).signOut(),
+            child: Text(
+              'ログアウト',
+              style: textTheme.titleMedium?.copyWith(color: Colors.white),
+            ),
+          ),
+        ],
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: spacing.p16),
