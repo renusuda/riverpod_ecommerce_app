@@ -55,6 +55,9 @@ class SignUpPage extends HookConsumerWidget {
                     if (value == null || value.trim().isEmpty) {
                       return 'パスワードを入力してください';
                     }
+                    if (value.length < 8) {
+                      return 'パスワードは8文字以上で入力してください';
+                    }
                     return null;
                   },
                 ),
