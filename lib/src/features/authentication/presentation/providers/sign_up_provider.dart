@@ -9,6 +9,7 @@ class SignUp extends _$SignUp {
   FutureOr<void> build() {}
 
   Future<void> signUp({required String email, required String password}) async {
+    state = const AsyncLoading();
     state = await AsyncValue.guard(
       () => ref
           .read(authenticationRepositoryProvider)

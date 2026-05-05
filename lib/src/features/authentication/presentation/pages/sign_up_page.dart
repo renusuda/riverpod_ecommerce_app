@@ -20,6 +20,8 @@ class SignUpPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final spacing = context.spacing;
 
+    final signUpState = ref.watch(signUpProvider);
+
     final emailController = useTextEditingController();
     final passwordController = useTextEditingController();
     final formKey = useMemoized(() => GlobalKey<FormState>());
@@ -65,15 +67,18 @@ class SignUpPage extends HookConsumerWidget {
                 SizedBox(height: spacing.p24),
                 PrimaryButton(
                   label: 'アカウントを作成',
-                  onPressed: () {
-                    if (formKey.currentState!.validate() != true) return;
-                    ref
-                        .read(signUpProvider.notifier)
-                        .signUp(
-                          email: emailController.text,
-                          password: passwordController.text,
-                        );
-                  },
+                  isLoading: signUpState.isLoading,
+                  onPressed: signUpState.isLoading
+                      ? null
+                      : () {
+                          if (formKey.currentState!.validate() != true) return;
+                          ref
+                              .read(signUpProvider.notifier)
+                              .signUp(
+                                email: emailController.text,
+                                password: passwordController.text,
+                              );
+                        },
                 ),
                 SizedBox(height: spacing.p24),
                 AuthTextButton(
