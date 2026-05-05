@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 
 class EmailTextField extends StatelessWidget {
-  const EmailTextField({super.key, required this.controller, this.validator});
+  const EmailTextField({
+    super.key,
+    required this.controller,
+    required this.validator,
+  });
 
   final TextEditingController controller;
-  final String? Function(String?)? validator;
+  final String? Function(String?) validator;
 
   @override
   Widget build(BuildContext context) {
