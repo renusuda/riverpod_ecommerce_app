@@ -11,3 +11,11 @@ class EmailAlreadyInUseException extends AppException {
   EmailAlreadyInUseException()
     : super('email-already-in-use', 'このメールアドレスはすでに使用されています。');
 }
+
+class UserNotFoundException extends AppException {
+  UserNotFoundException() : super('user-not-found', 'ユーザーが見つかりません。');
+}
+
+class WrongPasswordException extends AppException {
+  WrongPasswordException() : super('wrong-password', 'パスワードが正しくありません。');
+}

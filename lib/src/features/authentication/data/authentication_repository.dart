@@ -12,6 +12,10 @@ class AuthenticationRepository {
     return _remoteDataSource.signUp(email: email, password: password);
   }
 
+  Future<AppUser> signIn({required String email, required String password}) {
+    return _remoteDataSource.signIn(email: email, password: password);
+  }
+
   AppUser? get currentUser => _remoteDataSource.currentUser;
 
   Stream<AppUser?> authenticationStateChanges() {

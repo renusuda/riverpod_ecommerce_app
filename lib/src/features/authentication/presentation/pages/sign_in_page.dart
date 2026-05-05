@@ -1,5 +1,7 @@
 import 'package:ecommerce_app/src/common_widgets/app_card.dart';
 import 'package:ecommerce_app/src/common_widgets/primary_button.dart';
+import 'package:ecommerce_app/src/extensions/async_value_ui.dart';
+import 'package:ecommerce_app/src/features/authentication/presentation/providers/sign_in_provider.dart';
 import 'package:ecommerce_app/src/features/authentication/presentation/widgets/auth_text_button.dart';
 import 'package:ecommerce_app/src/features/authentication/presentation/widgets/email_text_field.dart';
 import 'package:ecommerce_app/src/features/authentication/presentation/widgets/password_text_field.dart';
@@ -18,9 +20,16 @@ class SignInPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final spacing = context.spacing;
 
+    final signInState = ref.watch(signInProvider);
+
     final emailController = useTextEditingController();
     final passwordController = useTextEditingController();
     final formKey = useMemoized(() => GlobalKey<FormState>());
+
+    ref.listen(
+      signInProvider,
+      (previous, next) => next.showAlertDialogOnError(context),
+    );
 
     return Scaffold(
       appBar: AppBar(
@@ -51,9 +60,18 @@ class SignInPage extends HookConsumerWidget {
                 SizedBox(height: spacing.p24),
                 PrimaryButton(
                   label: 'ログイン',
-                  onPressed: () {
-                    if (formKey.currentState!.validate() != true) return;
-                  },
+                  isLoading: signInState.isLoading,
+                  onPressed: signInState.isLoading
+                      ? null
+                      : () {
+                          if (formKey.currentState!.validate() != true) return;
+                          ref
+                              .read(signInProvider.notifier)
+                              .signIn(
+                                email: emailController.text,
+                                password: passwordController.text,
+                              );
+                        },
                 ),
                 SizedBox(height: spacing.p24),
                 AuthTextButton(

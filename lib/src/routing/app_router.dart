@@ -20,7 +20,7 @@ GoRouter goRouter(Ref ref) {
       final isLoggedIn = authenticationRepository.currentUser != null;
       final path = state.uri.path;
       if (isLoggedIn) {
-        if (path == '/sign-up') {
+        if (path == '/sign-up' || path == '/sign-in') {
           return '/';
         }
       }

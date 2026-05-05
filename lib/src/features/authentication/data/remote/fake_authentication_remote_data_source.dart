@@ -31,6 +31,29 @@ class FakeAuthenticationRemoteDataSource
   }
 
   @override
+  Future<FakeAppUser> signIn({
+    required String email,
+    required String password,
+  }) async {
+    await Future.delayed(const Duration(seconds: 1));
+    final registeredPassword = _users[email];
+    if (registeredPassword == null) {
+      throw UserNotFoundException();
+    }
+    if (registeredPassword != password) {
+      throw WrongPasswordException();
+    }
+    final user = FakeAppUser(
+      uid: email.split('').reversed.join(),
+      email: email,
+      password: password,
+    );
+    _currentUser = user;
+    _authenticationState.add(user);
+    return user;
+  }
+
+  @override
   FakeAppUser? get currentUser => _currentUser;
 
   @override
