@@ -19,6 +19,7 @@ class SignInPage extends HookConsumerWidget {
 
     final emailController = useTextEditingController();
     final passwordController = useTextEditingController();
+    final formKey = useMemoized(() => GlobalKey<FormState>());
 
     return Scaffold(
       appBar: AppBar(
@@ -30,23 +31,39 @@ class SignInPage extends HookConsumerWidget {
       body: Padding(
         padding: EdgeInsets.all(spacing.p24),
         child: AppCard(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              EmailTextField(controller: emailController),
-              SizedBox(height: spacing.p16),
-              PasswordTextField(
-                hintText: 'パスワード',
-                controller: passwordController,
-              ),
-              SizedBox(height: spacing.p24),
-              PrimaryButton(label: 'ログイン', onPressed: () {}),
-              SizedBox(height: spacing.p24),
-              AuthTextButton(
-                label: 'アカウントをお持ちでないですか？ 登録',
-                onPressed: () => context.goNamed(AppRoute.signUp.name),
-              ),
-            ],
+          child: Form(
+            key: formKey,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                EmailTextField(
+                  controller: emailController,
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return 'メールアドレスを入力してください';
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(height: spacing.p16),
+                PasswordTextField(
+                  hintText: 'パスワード',
+                  controller: passwordController,
+                ),
+                SizedBox(height: spacing.p24),
+                PrimaryButton(
+                  label: 'ログイン',
+                  onPressed: () {
+                    if (formKey.currentState!.validate() != true) return;
+                  },
+                ),
+                SizedBox(height: spacing.p24),
+                AuthTextButton(
+                  label: 'アカウントをお持ちでないですか？ 登録',
+                  onPressed: () => context.goNamed(AppRoute.signUp.name),
+                ),
+              ],
+            ),
           ),
         ),
       ),
