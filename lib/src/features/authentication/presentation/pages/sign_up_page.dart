@@ -50,6 +50,12 @@ class SignUpPage extends HookConsumerWidget {
                 PasswordTextField(
                   hintText: 'パスワード（8文字以上）',
                   controller: passwordController,
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return 'パスワードを入力してください';
+                    }
+                    return null;
+                  },
                 ),
                 SizedBox(height: spacing.p24),
                 PrimaryButton(
