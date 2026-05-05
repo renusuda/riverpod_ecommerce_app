@@ -20,6 +20,7 @@ class SignUpPage extends HookConsumerWidget {
 
     final emailController = useTextEditingController();
     final passwordController = useTextEditingController();
+    final formKey = useMemoized(() => GlobalKey<FormState>());
 
     return Scaffold(
       appBar: AppBar(
@@ -31,31 +32,45 @@ class SignUpPage extends HookConsumerWidget {
       body: Padding(
         padding: EdgeInsets.all(spacing.p24),
         child: AppCard(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              EmailTextField(controller: emailController),
-              SizedBox(height: spacing.p16),
-              PasswordTextField(
-                hintText: 'パスワード（8文字以上）',
-                controller: passwordController,
-              ),
-              SizedBox(height: spacing.p24),
-              PrimaryButton(
-                label: 'アカウントを作成',
-                onPressed: () => ref
-                    .read(signUpProvider.notifier)
-                    .signUp(
-                      email: emailController.text,
-                      password: passwordController.text,
-                    ),
-              ),
-              SizedBox(height: spacing.p24),
-              AuthTextButton(
-                label: 'アカウントをお持ちですか？ ログイン',
-                onPressed: () => context.goNamed(AppRoute.signIn.name),
-              ),
-            ],
+          child: Form(
+            key: formKey,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                EmailTextField(
+                  controller: emailController,
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return 'メールアドレスを入力してください';
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(height: spacing.p16),
+                PasswordTextField(
+                  hintText: 'パスワード（8文字以上）',
+                  controller: passwordController,
+                ),
+                SizedBox(height: spacing.p24),
+                PrimaryButton(
+                  label: 'アカウントを作成',
+                  onPressed: () {
+                    if (formKey.currentState!.validate() != true) return;
+                    ref
+                        .read(signUpProvider.notifier)
+                        .signUp(
+                          email: emailController.text,
+                          password: passwordController.text,
+                        );
+                  },
+                ),
+                SizedBox(height: spacing.p24),
+                AuthTextButton(
+                  label: 'アカウントをお持ちですか？ ログイン',
+                  onPressed: () => context.goNamed(AppRoute.signIn.name),
+                ),
+              ],
+            ),
           ),
         ),
       ),
