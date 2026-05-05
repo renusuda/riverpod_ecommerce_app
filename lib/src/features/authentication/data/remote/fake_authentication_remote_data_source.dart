@@ -6,7 +6,7 @@ import 'package:ecommerce_app/src/features/authentication/domain/fake_app_user.d
 
 class FakeAuthenticationRemoteDataSource
     implements AuthenticationRemoteDataSource {
-  final Map<String, String> _users = {};
+  final Map<String, String> _users = {'test@test.com': 'password'};
   FakeAppUser? _currentUser;
   final _authenticationState = StreamController<FakeAppUser?>.broadcast();
 
