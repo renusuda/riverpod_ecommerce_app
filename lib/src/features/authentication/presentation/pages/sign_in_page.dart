@@ -6,14 +6,19 @@ import 'package:ecommerce_app/src/features/authentication/presentation/widgets/p
 import 'package:ecommerce_app/src/routing/app_route.dart';
 import 'package:ecommerce_app/src/theme/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class SignInPage extends StatelessWidget {
+class SignInPage extends HookConsumerWidget {
   const SignInPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final spacing = context.spacing;
+
+    final emailController = useTextEditingController();
+    final passwordController = useTextEditingController();
 
     return Scaffold(
       appBar: AppBar(
@@ -28,9 +33,12 @@ class SignInPage extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const EmailTextField(),
+              EmailTextField(controller: emailController),
               SizedBox(height: spacing.p16),
-              const PasswordTextField(hintText: 'パスワード'),
+              PasswordTextField(
+                hintText: 'パスワード',
+                controller: passwordController,
+              ),
               SizedBox(height: spacing.p24),
               PrimaryButton(label: 'ログイン', onPressed: () {}),
               SizedBox(height: spacing.p24),

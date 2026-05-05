@@ -1,9 +1,11 @@
+import 'package:ecommerce_app/src/features/authentication/data/authentication_repository_provider.dart';
 import 'package:ecommerce_app/src/features/authentication/presentation/pages/sign_in_page.dart';
 import 'package:ecommerce_app/src/features/authentication/presentation/pages/sign_up_page.dart';
 import 'package:ecommerce_app/src/features/cart/presentation/pages/cart_page.dart';
 import 'package:ecommerce_app/src/features/products/presentation/pages/product_detail_page.dart';
 import 'package:ecommerce_app/src/features/products/presentation/pages/product_list_page.dart';
 import 'package:ecommerce_app/src/routing/app_route.dart';
+import 'package:ecommerce_app/src/routing/go_router_refresh_stream.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -12,7 +14,21 @@ part 'app_router.g.dart';
 
 @Riverpod(keepAlive: true)
 GoRouter goRouter(Ref ref) {
+  final authenticationRepository = ref.watch(authenticationRepositoryProvider);
   return GoRouter(
+    redirect: (context, state) {
+      final isLoggedIn = authenticationRepository.currentUser != null;
+      final path = state.uri.path;
+      if (isLoggedIn) {
+        if (path == '/sign-up') {
+          return '/';
+        }
+      }
+      return null;
+    },
+    refreshListenable: GoRouterRefreshStream(
+      authenticationRepository.authenticationStateChanges(),
+    ),
     routes: [
       GoRoute(
         path: '/',

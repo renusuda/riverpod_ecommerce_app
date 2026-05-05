@@ -1,19 +1,25 @@
 import 'package:ecommerce_app/src/common_widgets/app_card.dart';
 import 'package:ecommerce_app/src/common_widgets/primary_button.dart';
+import 'package:ecommerce_app/src/features/authentication/presentation/providers/sign_up_provider.dart';
 import 'package:ecommerce_app/src/features/authentication/presentation/widgets/auth_text_button.dart';
 import 'package:ecommerce_app/src/features/authentication/presentation/widgets/email_text_field.dart';
 import 'package:ecommerce_app/src/features/authentication/presentation/widgets/password_text_field.dart';
 import 'package:ecommerce_app/src/routing/app_route.dart';
 import 'package:ecommerce_app/src/theme/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class SignUpPage extends StatelessWidget {
+class SignUpPage extends HookConsumerWidget {
   const SignUpPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final spacing = context.spacing;
+
+    final emailController = useTextEditingController();
+    final passwordController = useTextEditingController();
 
     return Scaffold(
       appBar: AppBar(
@@ -28,11 +34,22 @@ class SignUpPage extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const EmailTextField(),
+              EmailTextField(controller: emailController),
               SizedBox(height: spacing.p16),
-              const PasswordTextField(hintText: 'パスワード（8文字以上）'),
+              PasswordTextField(
+                hintText: 'パスワード（8文字以上）',
+                controller: passwordController,
+              ),
               SizedBox(height: spacing.p24),
-              PrimaryButton(label: 'アカウントを作成', onPressed: () {}),
+              PrimaryButton(
+                label: 'アカウントを作成',
+                onPressed: () => ref
+                    .read(signUpProvider.notifier)
+                    .signUp(
+                      email: emailController.text,
+                      password: passwordController.text,
+                    ),
+              ),
               SizedBox(height: spacing.p24),
               AuthTextButton(
                 label: 'アカウントをお持ちですか？ ログイン',
