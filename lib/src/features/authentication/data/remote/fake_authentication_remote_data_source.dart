@@ -31,10 +31,7 @@ class FakeAuthenticationRemoteDataSource
   }
 
   @override
-  Future<FakeAppUser> signIn({
-    required String email,
-    required String password,
-  }) async {
+  Future<void> signIn({required String email, required String password}) async {
     await Future.delayed(const Duration(seconds: 1));
     final registeredPassword = _users[email];
     if (registeredPassword == null) {
@@ -50,7 +47,6 @@ class FakeAuthenticationRemoteDataSource
     );
     _currentUser = user;
     _authenticationState.add(user);
-    return user;
   }
 
   @override
