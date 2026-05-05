@@ -12,10 +12,13 @@ class AppBarMenuButton extends StatelessWidget {
       onSelected: (value) {
         if (value == 'signIn') {
           context.goNamed(AppRoute.signIn.name);
+        } else if (value == 'account') {
+          context.goNamed(AppRoute.account.name);
         }
       },
       itemBuilder: (context) => [
         const PopupMenuItem(value: 'signIn', child: Text('ログイン')),
+        const PopupMenuItem(value: 'account', child: Text('アカウント')),
       ],
     );
   }

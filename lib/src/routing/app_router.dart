@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/src/features/authentication/data/authentication_repository_provider.dart';
+import 'package:ecommerce_app/src/features/authentication/presentation/pages/account_page.dart';
 import 'package:ecommerce_app/src/features/authentication/presentation/pages/sign_in_page.dart';
 import 'package:ecommerce_app/src/features/authentication/presentation/pages/sign_up_page.dart';
 import 'package:ecommerce_app/src/features/cart/presentation/pages/cart_page.dart';
@@ -22,6 +23,10 @@ GoRouter goRouter(Ref ref) {
       if (isLoggedIn) {
         if (path == '/sign-up' || path == '/sign-in') {
           return '/';
+        }
+      } else {
+        if (path == '/account') {
+          return '/sign-in';
         }
       }
       return null;
@@ -60,6 +65,12 @@ GoRouter goRouter(Ref ref) {
             name: AppRoute.signIn.name,
             pageBuilder: (context, state) =>
                 MaterialPage(fullscreenDialog: true, child: SignInPage()),
+          ),
+          GoRoute(
+            path: 'account',
+            name: AppRoute.account.name,
+            pageBuilder: (context, state) =>
+                MaterialPage(fullscreenDialog: true, child: AccountPage()),
           ),
         ],
       ),
