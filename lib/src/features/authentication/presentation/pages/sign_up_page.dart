@@ -34,6 +34,7 @@ class SignUpPage extends HookConsumerWidget {
         child: AppCard(
           child: Form(
             key: formKey,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
