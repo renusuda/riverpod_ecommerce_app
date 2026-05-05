@@ -11,10 +11,7 @@ class FakeAuthenticationRemoteDataSource
   final _authenticationState = StreamController<FakeAppUser?>.broadcast();
 
   @override
-  Future<FakeAppUser> signUp({
-    required String email,
-    required String password,
-  }) async {
+  Future<void> signUp({required String email, required String password}) async {
     await Future.delayed(const Duration(seconds: 1));
     if (_users.containsKey(email)) {
       throw EmailAlreadyInUseException();
@@ -27,7 +24,6 @@ class FakeAuthenticationRemoteDataSource
     );
     _currentUser = user;
     _authenticationState.add(user);
-    return user;
   }
 
   @override

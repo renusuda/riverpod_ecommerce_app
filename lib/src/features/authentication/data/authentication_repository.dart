@@ -8,7 +8,7 @@ class AuthenticationRepository {
 
   final AuthenticationRemoteDataSource _remoteDataSource;
 
-  Future<AppUser> signUp({required String email, required String password}) {
+  Future<void> signUp({required String email, required String password}) {
     return _remoteDataSource.signUp(email: email, password: password);
   }
 
