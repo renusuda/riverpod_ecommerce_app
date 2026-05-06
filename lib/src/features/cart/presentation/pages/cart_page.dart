@@ -73,7 +73,7 @@ class CartPage extends ConsumerWidget {
                           PrimaryButton(
                             label: '購入する',
                             onPressed: () =>
-                                context.goNamed(AppRoute.signUp.name),
+                                context.goNamed(AppRoute.payment.name),
                           ),
                         ],
                       ),
