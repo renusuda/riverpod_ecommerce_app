@@ -107,3 +107,39 @@ final class AuthenticationRepositoryProvider
 
 String _$authenticationRepositoryHash() =>
     r'9beaea200ef1d6ba9b47c63290bc4a2d02687757';
+
+@ProviderFor(authenticationStateChanges)
+final authenticationStateChangesProvider =
+    AuthenticationStateChangesProvider._();
+
+final class AuthenticationStateChangesProvider
+    extends
+        $FunctionalProvider<AsyncValue<AppUser?>, AppUser?, Stream<AppUser?>>
+    with $FutureModifier<AppUser?>, $StreamProvider<AppUser?> {
+  AuthenticationStateChangesProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'authenticationStateChangesProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$authenticationStateChangesHash();
+
+  @$internal
+  @override
+  $StreamProviderElement<AppUser?> $createElement($ProviderPointer pointer) =>
+      $StreamProviderElement(pointer);
+
+  @override
+  Stream<AppUser?> create(Ref ref) {
+    return authenticationStateChanges(ref);
+  }
+}
+
+String _$authenticationStateChangesHash() =>
+    r'5eabb446325dea818e1a54ff694f647f8a1206bc';
