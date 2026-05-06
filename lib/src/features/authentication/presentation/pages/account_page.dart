@@ -25,8 +25,27 @@ class AccountPage extends ConsumerWidget {
         centerTitle: true,
         actions: [
           TextButton(
-            onPressed: () =>
-                ref.read(authenticationRepositoryProvider).signOut(),
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  content: Text('本当にログアウトしますか？'),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      child: const Text('キャンセル'),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        ref.read(authenticationRepositoryProvider).signOut();
+                        Navigator.of(context).pop();
+                      },
+                      child: const Text('ログアウト'),
+                    ),
+                  ],
+                ),
+              );
+            },
             child: Text(
               'ログアウト',
               style: textTheme.titleMedium?.copyWith(color: Colors.white),
