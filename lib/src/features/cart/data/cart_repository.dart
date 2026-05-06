@@ -27,6 +27,13 @@ class CartRepository {
     return _remoteDataSource.removeFromCart(userId, productId);
   }
 
+  Future<void> clearCart({String? userId}) {
+    if (userId == null) {
+      return _localDataSource.clearCart();
+    }
+    return _remoteDataSource.clearCart(userId);
+  }
+
   Stream<Cart> watchCart({String? userId}) {
     if (userId == null) {
       return _localDataSource.watchCart();

@@ -24,4 +24,9 @@ class FakeOrdersRemoteDataSource implements OrdersRemoteDataSource {
   Future<List<Order>> fetchOrders() async {
     return _orders;
   }
+
+  @override
+  Future<void> addOrder(Order order) async {
+    _orders.insert(0, order);
+  }
 }

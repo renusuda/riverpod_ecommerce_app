@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'cart_provider.dart';
+part of 'payment_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -9,42 +9,42 @@ part of 'cart_provider.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
 
-@ProviderFor(Cart)
-final cartProvider = CartProvider._();
+@ProviderFor(Payment)
+final paymentProvider = PaymentProvider._();
 
-final class CartProvider extends $StreamNotifierProvider<Cart, domain.Cart> {
-  CartProvider._()
+final class PaymentProvider extends $AsyncNotifierProvider<Payment, void> {
+  PaymentProvider._()
     : super(
         from: null,
         argument: null,
         retry: null,
-        name: r'cartProvider',
+        name: r'paymentProvider',
         isAutoDispose: true,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
 
   @override
-  String debugGetCreateSourceHash() => _$cartHash();
+  String debugGetCreateSourceHash() => _$paymentHash();
 
   @$internal
   @override
-  Cart create() => Cart();
+  Payment create() => Payment();
 }
 
-String _$cartHash() => r'8ca09bf785027022efe6f2f32c1d4d8ab26c0030';
+String _$paymentHash() => r'e65c056640c1c56e7e2c7a6c242383b7f2726514';
 
-abstract class _$Cart extends $StreamNotifier<domain.Cart> {
-  Stream<domain.Cart> build();
+abstract class _$Payment extends $AsyncNotifier<void> {
+  FutureOr<void> build();
   @$mustCallSuper
   @override
   void runBuild() {
-    final ref = this.ref as $Ref<AsyncValue<domain.Cart>, domain.Cart>;
+    final ref = this.ref as $Ref<AsyncValue<void>, void>;
     final element =
         ref.element
             as $ClassProviderElement<
-              AnyNotifier<AsyncValue<domain.Cart>, domain.Cart>,
-              AsyncValue<domain.Cart>,
+              AnyNotifier<AsyncValue<void>, void>,
+              AsyncValue<void>,
               Object?,
               Object?
             >;

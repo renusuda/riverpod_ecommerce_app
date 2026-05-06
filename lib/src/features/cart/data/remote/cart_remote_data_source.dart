@@ -7,6 +7,8 @@ abstract interface class CartRemoteDataSource {
 
   Future<void> removeFromCart(String userId, String productId);
 
+  Future<void> clearCart(String userId);
+
   Future<void> saveCart(String userId, Cart cart);
 
   Stream<Cart> watchCart(String userId);

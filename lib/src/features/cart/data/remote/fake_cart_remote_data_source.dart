@@ -43,6 +43,11 @@ class FakeCartRemoteDataSource implements CartRemoteDataSource {
   }
 
   @override
+  Future<void> clearCart(String userId) async {
+    await saveCart(userId, const Cart());
+  }
+
+  @override
   Future<void> saveCart(String userId, Cart cart) async {
     await Future.delayed(const Duration(seconds: 1));
     _carts[userId] = cart;

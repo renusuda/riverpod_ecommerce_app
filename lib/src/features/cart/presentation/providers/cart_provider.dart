@@ -27,4 +27,9 @@ class Cart extends _$Cart {
         .read(cartRepositoryProvider)
         .removeFromCart(productId, userId: user?.uid);
   }
+
+  Future<void> clear() async {
+    final user = ref.read(authenticationRepositoryProvider).currentUser;
+    await ref.read(cartRepositoryProvider).clearCart(userId: user?.uid);
+  }
 }

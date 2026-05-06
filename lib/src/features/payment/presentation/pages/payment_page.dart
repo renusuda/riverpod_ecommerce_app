@@ -1,13 +1,17 @@
 import 'package:ecommerce_app/src/common_widgets/async_value_widget.dart';
 import 'package:ecommerce_app/src/common_widgets/primary_button.dart';
+import 'package:ecommerce_app/src/extensions/async_value_ui.dart';
 import 'package:ecommerce_app/src/extensions/int_extensions.dart';
 import 'package:ecommerce_app/src/features/cart/presentation/providers/cart_product_detail_provider.dart';
 import 'package:ecommerce_app/src/features/cart/presentation/providers/cart_provider.dart';
 import 'package:ecommerce_app/src/features/cart/presentation/providers/cart_total_provider.dart';
 import 'package:ecommerce_app/src/features/cart/presentation/widgets/empty_cart_view.dart';
+import 'package:ecommerce_app/src/features/payment/presentation/providers/payment_provider.dart';
 import 'package:ecommerce_app/src/features/products/presentation/widgets/product_image.dart';
+import 'package:ecommerce_app/src/routing/app_route.dart';
 import 'package:ecommerce_app/src/theme/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class PaymentPage extends ConsumerWidget {
@@ -15,11 +19,21 @@ class PaymentPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final paymentState = ref.watch(paymentProvider);
     final cartAsyncValue = ref.watch(cartProvider);
     final cartTotalAsyncValue = ref.watch(cartTotalProvider);
 
     final spacing = context.spacing;
     final textTheme = Theme.of(context).textTheme;
+
+    ref.listen(paymentProvider, (previous, next) {
+      if (previous?.isLoading == true && next.hasValue) {
+        context.goNamed(AppRoute.orders.name);
+      }
+      if (previous?.isLoading == true && next.hasError) {
+        next.showAlertDialogOnError(context);
+      }
+    });
 
     return Scaffold(
       backgroundColor: const Color(0xFFFCF6FE),
@@ -71,7 +85,15 @@ class PaymentPage extends ConsumerWidget {
                           ),
                         ),
                         SizedBox(height: spacing.p16),
-                        PrimaryButton(label: '支払う', onPressed: () {}),
+                        PrimaryButton(
+                          label: '支払う',
+                          isLoading: paymentState.isLoading,
+                          onPressed: paymentState.isLoading
+                              ? null
+                              : () => ref
+                                    .read(paymentProvider.notifier)
+                                    .complete(cart),
+                        ),
                       ],
                     ),
                   ),
