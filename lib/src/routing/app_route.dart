@@ -1,1 +1,1 @@
-enum AppRoute { home, product, cart, signUp, signIn, account }
+enum AppRoute { home, product, cart, signUp, signIn, account, orders }

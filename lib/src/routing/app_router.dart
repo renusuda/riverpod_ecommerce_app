@@ -3,6 +3,7 @@ import 'package:ecommerce_app/src/features/authentication/presentation/pages/acc
 import 'package:ecommerce_app/src/features/authentication/presentation/pages/sign_in_page.dart';
 import 'package:ecommerce_app/src/features/authentication/presentation/pages/sign_up_page.dart';
 import 'package:ecommerce_app/src/features/cart/presentation/pages/cart_page.dart';
+import 'package:ecommerce_app/src/features/orders/presentation/pages/orders_page.dart';
 import 'package:ecommerce_app/src/features/products/presentation/pages/product_detail_page.dart';
 import 'package:ecommerce_app/src/features/products/presentation/pages/product_list_page.dart';
 import 'package:ecommerce_app/src/routing/app_route.dart';
@@ -25,7 +26,7 @@ GoRouter goRouter(Ref ref) {
           return '/';
         }
       } else {
-        if (path == '/account') {
+        if (path == '/account' || path == '/orders') {
           return '/sign-in';
         }
       }
@@ -71,6 +72,12 @@ GoRouter goRouter(Ref ref) {
             name: AppRoute.account.name,
             pageBuilder: (context, state) =>
                 MaterialPage(fullscreenDialog: true, child: AccountPage()),
+          ),
+          GoRoute(
+            path: 'orders',
+            name: AppRoute.orders.name,
+            pageBuilder: (context, state) =>
+                MaterialPage(fullscreenDialog: true, child: OrdersPage()),
           ),
         ],
       ),

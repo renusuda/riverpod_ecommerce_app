@@ -16,6 +16,8 @@ class AppBarMenuButton extends ConsumerWidget {
       onSelected: (value) {
         if (value == 'signIn') {
           context.goNamed(AppRoute.signIn.name);
+        } else if (value == 'orders') {
+          context.goNamed(AppRoute.orders.name);
         } else if (value == 'account') {
           context.goNamed(AppRoute.account.name);
         }
@@ -23,8 +25,10 @@ class AppBarMenuButton extends ConsumerWidget {
       itemBuilder: (context) => [
         if (user == null)
           const PopupMenuItem(value: 'signIn', child: Text('ログイン')),
-        if (user != null)
+        if (user != null) ...[
+          const PopupMenuItem(value: 'orders', child: Text('注文履歴')),
           const PopupMenuItem(value: 'account', child: Text('アカウント')),
+        ],
       ],
     );
   }
