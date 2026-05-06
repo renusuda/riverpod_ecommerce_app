@@ -98,6 +98,54 @@ final class CartLocalDataSourceProvider
 String _$cartLocalDataSourceHash() =>
     r'fe7bfbb4086ea689c34674ef5a29256b6b997a4e';
 
+@ProviderFor(cartRemoteDataSource)
+final cartRemoteDataSourceProvider = CartRemoteDataSourceProvider._();
+
+final class CartRemoteDataSourceProvider
+    extends
+        $FunctionalProvider<
+          CartRemoteDataSource,
+          CartRemoteDataSource,
+          CartRemoteDataSource
+        >
+    with $Provider<CartRemoteDataSource> {
+  CartRemoteDataSourceProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'cartRemoteDataSourceProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$cartRemoteDataSourceHash();
+
+  @$internal
+  @override
+  $ProviderElement<CartRemoteDataSource> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
+
+  @override
+  CartRemoteDataSource create(Ref ref) {
+    return cartRemoteDataSource(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(CartRemoteDataSource value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<CartRemoteDataSource>(value),
+    );
+  }
+}
+
+String _$cartRemoteDataSourceHash() =>
+    r'44d32b427d5eee7dde37c4ac94f8f0a8cf7827f1';
+
 @ProviderFor(cartRepository)
 final cartRepositoryProvider = CartRepositoryProvider._();
 
@@ -137,4 +185,4 @@ final class CartRepositoryProvider
   }
 }
 
-String _$cartRepositoryHash() => r'2589a584cb3cae7e883a0ac7c31ff97288b75012';
+String _$cartRepositoryHash() => r'f3010e18d6e54916b66c71814e0cfce137d64ae6';

@@ -5,5 +5,7 @@ abstract interface class CartLocalDataSource {
 
   Future<void> removeFromCart(String productId);
 
+  Future<void> clearCart();
+
   Stream<Cart> watchCart();
 }

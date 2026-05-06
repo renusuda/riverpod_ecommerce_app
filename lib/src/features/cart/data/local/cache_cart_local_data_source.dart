@@ -36,6 +36,11 @@ class CacheCartLocalDataSource implements CartLocalDataSource {
   }
 
   @override
+  Future<void> clearCart() async {
+    await _database.delete(_database.cartEntries).go();
+  }
+
+  @override
   Stream<Cart> watchCart() {
     return _database.select(_database.cartEntries).watch().map((entries) {
       final items = entries

@@ -32,7 +32,7 @@ final class CartProvider extends $StreamNotifierProvider<Cart, domain.Cart> {
   Cart create() => Cart();
 }
 
-String _$cartHash() => r'4807ce00aff14cd902b50d39c773c9c6cd217227';
+String _$cartHash() => r'6539a02f02ed5793c5f810b5b740c312ca4f5575';
 
 abstract class _$Cart extends $StreamNotifier<domain.Cart> {
   Stream<domain.Cart> build();
