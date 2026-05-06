@@ -92,7 +92,7 @@ void main() {
     await database.close();
   });
 
-  testWidgets('未ログインでメニューからアカウントを選ぶとログイン画面に遷移する', (tester) async {
+  testWidgets('未ログインでメニューからログインを選ぶとログイン画面に遷移する', (tester) async {
     await tester.pumpWidget(const ProviderScope(child: App()));
     await tester.pumpAndSettle();
 
@@ -100,7 +100,7 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('ログイン'), findsOneWidget);
-    await tester.tap(find.text('アカウント'));
+    await tester.tap(find.text('ログイン'));
     await tester.pumpAndSettle();
 
     expect(find.text('ログインする'), findsOneWidget);
@@ -157,8 +157,15 @@ void main() {
     await tester.tap(find.text('ログアウト'));
     await tester.pumpAndSettle();
 
-    expect(find.text('ショップ'), findsOneWidget);
-    expect(find.text('ブルスケッタプレート'), findsOneWidget);
+    await tester.tap(
+      find.descendant(
+        of: find.byType(AlertDialog),
+        matching: find.widgetWithText(TextButton, 'ログアウト'),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    expect(find.text('ログインする'), findsOneWidget);
   });
 
   testWidgets('メニューからログイン画面に遷移する', (tester) async {
