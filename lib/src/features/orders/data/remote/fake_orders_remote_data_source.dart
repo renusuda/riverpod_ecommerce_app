@@ -3,9 +3,10 @@ import 'package:ecommerce_app/src/features/orders/domain/order.dart';
 
 class FakeOrdersRemoteDataSource implements OrdersRemoteDataSource {
   final List<Order> _orders = [];
+
   @override
-  Future<List<Order>> fetchOrders() async {
-    return _orders;
+  Future<List<Order>> fetchOrders(String userId) async {
+    return _orders.where((order) => order.userId == userId).toList();
   }
 
   @override

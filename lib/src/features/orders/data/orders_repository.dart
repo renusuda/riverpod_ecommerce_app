@@ -7,8 +7,8 @@ class OrdersRepository {
 
   final OrdersRemoteDataSource _remoteDataSource;
 
-  Future<List<Order>> fetchOrders() {
-    return _remoteDataSource.fetchOrders();
+  Future<List<Order>> fetchOrders(String userId) {
+    return _remoteDataSource.fetchOrders(userId);
   }
 
   Future<void> addOrder(Order order) {
