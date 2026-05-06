@@ -27,11 +27,15 @@ class PaymentPage extends ConsumerWidget {
     final textTheme = Theme.of(context).textTheme;
 
     ref.listen(paymentProvider, (previous, next) {
-      if (previous?.isLoading == true && next.hasValue) {
-        context.goNamed(AppRoute.orders.name);
-      }
-      if (previous?.isLoading == true && next.hasError) {
+      if (previous?.isLoading != true) return;
+
+      if (next.hasError) {
         next.showAlertDialogOnError(context);
+        return;
+      }
+
+      if (!next.isLoading) {
+        context.goNamed(AppRoute.orders.name);
       }
     });
 
