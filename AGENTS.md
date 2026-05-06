@@ -3,7 +3,7 @@
 ## コード構成
 
 - 少数の大きなファイルより、多数の小さなファイルを優先する
-- レイヤーごとに整理する: pages、models、providers、repositories、widgets
+- レイヤーごとに整理する: presentation、use_case、domain、data
 - ファイルは200行未満に保つ（最大400行）
 
 ## コードスタイル
