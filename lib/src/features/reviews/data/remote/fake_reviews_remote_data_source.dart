@@ -9,7 +9,10 @@ class FakeReviewsRemoteDataSource implements ReviewsRemoteDataSource {
     if (index == -1) return;
     final product = kTestProducts[index];
     kTestProducts[index] = product.copyWith(
-      reviews: [review, ...product.reviews],
+      reviews: [
+        review,
+        ...product.reviews.where((r) => r.reviewerId != review.reviewerId),
+      ],
     );
   }
 }

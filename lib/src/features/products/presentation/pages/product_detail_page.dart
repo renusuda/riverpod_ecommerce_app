@@ -3,6 +3,7 @@ import 'package:ecommerce_app/src/common_widgets/async_value_widget.dart';
 import 'package:ecommerce_app/src/common_widgets/primary_button.dart';
 import 'package:ecommerce_app/src/common_widgets/quantity_stepper.dart';
 import 'package:ecommerce_app/src/extensions/int_extensions.dart';
+import 'package:ecommerce_app/src/features/authentication/data/authentication_repository_provider.dart';
 import 'package:ecommerce_app/src/features/cart/presentation/providers/cart_provider.dart';
 import 'package:ecommerce_app/src/features/orders/domain/order_list_extension.dart';
 import 'package:ecommerce_app/src/features/orders/presentation/providers/orders_provider.dart';
@@ -12,6 +13,7 @@ import 'package:ecommerce_app/src/features/products/presentation/widgets/cart_ic
 import 'package:ecommerce_app/src/features/products/presentation/providers/product_detail_provider.dart';
 import 'package:ecommerce_app/src/features/products/presentation/widgets/product_image.dart';
 import 'package:ecommerce_app/src/features/products/presentation/widgets/product_rating_bar.dart';
+import 'package:ecommerce_app/src/features/reviews/domain/review.dart';
 import 'package:ecommerce_app/src/features/reviews/presentation/widgets/review_list.dart';
 import 'package:ecommerce_app/src/routing/app_route.dart';
 import 'package:ecommerce_app/src/theme/app_theme.dart';
@@ -96,6 +98,7 @@ class _ProductDetailView extends HookConsumerWidget {
                   _ReviewActionRow(
                     productId: product.id,
                     orderDate: purchasedOrder.orderDate,
+                    reviews: product.reviews,
                   ),
                   const Divider(height: 32),
                 ],
@@ -130,17 +133,27 @@ class _ProductDetailView extends HookConsumerWidget {
   }
 }
 
-class _ReviewActionRow extends StatelessWidget {
-  const _ReviewActionRow({required this.productId, required this.orderDate});
+class _ReviewActionRow extends ConsumerWidget {
+  const _ReviewActionRow({
+    required this.productId,
+    required this.orderDate,
+    required this.reviews,
+  });
 
   final String productId;
   final DateTime orderDate;
+  final List<Review> reviews;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final spacing = context.spacing;
     final textTheme = Theme.of(context).textTheme;
     final orderDateText = DateFormat('yyyy年M月d日').format(orderDate);
+    final currentUserId = ref
+        .watch(authenticationRepositoryProvider)
+        .currentUser
+        ?.uid;
+    final hasReviewed = reviews.any((r) => r.reviewerId == currentUserId);
 
     return Row(
       children: [
@@ -161,7 +174,7 @@ class _ReviewActionRow extends StatelessWidget {
             foregroundColor: Colors.green.shade700,
             textStyle: textTheme.titleMedium,
           ),
-          child: const Text('レビューを書く'),
+          child: Text(hasReviewed ? 'レビューを更新' : 'レビューを書く'),
         ),
       ],
     );
