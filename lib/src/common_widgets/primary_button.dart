@@ -8,6 +8,7 @@ class PrimaryButton extends StatelessWidget {
     this.onPressed,
     this.expand = true,
     this.isLoading = false,
+    this.disabled = false,
   });
 
   final String label;
@@ -18,14 +19,17 @@ class PrimaryButton extends StatelessWidget {
 
   final bool isLoading;
 
+  final bool disabled;
+
   @override
   Widget build(BuildContext context) {
     final spacing = context.spacing;
+    final effectiveOnPressed = disabled || isLoading ? null : onPressed;
 
     return SizedBox(
       width: expand ? double.infinity : null,
       child: ElevatedButton(
-        onPressed: onPressed,
+        onPressed: effectiveOnPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.black,
           foregroundColor: Colors.white,
