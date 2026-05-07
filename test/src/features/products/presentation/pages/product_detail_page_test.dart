@@ -27,8 +27,8 @@ void main() {
       findsOneWidget,
     );
     expect(find.text('¥2,500'), findsOneWidget);
-    expect(find.text('4.5'), findsOneWidget);
-    expect(find.text('128 件のレビュー'), findsOneWidget);
+    expect(find.text('4.7'), findsOneWidget);
+    expect(find.text('3 件のレビュー'), findsOneWidget);
   });
 
   testWidgets('評価なし商品の詳細画面で評価が非表示になる', (tester) async {

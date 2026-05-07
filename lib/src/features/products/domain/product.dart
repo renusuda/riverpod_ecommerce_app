@@ -5,6 +5,8 @@ part 'product.freezed.dart';
 
 @freezed
 sealed class Product with _$Product {
+  const Product._();
+
   const factory Product({
     required String id,
     required String name,
@@ -12,8 +14,19 @@ sealed class Product with _$Product {
     required String imageUrl,
     required int price,
     required int stockQuantity,
-    @Default(0) int reviewCount,
-    @Default(0.0) double averageRating,
     @Default([]) List<Review> reviews,
   }) = _Product;
+
+  int get reviewCount => reviews.length;
+
+  double get averageRating {
+    if (reviews.isEmpty) {
+      return 0;
+    }
+
+    final ratingTotal = reviews
+        .map((review) => review.rating)
+        .reduce((total, rating) => total + rating);
+    return ratingTotal / reviews.length;
+  }
 }

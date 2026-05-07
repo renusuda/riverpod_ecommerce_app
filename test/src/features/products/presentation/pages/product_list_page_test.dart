@@ -12,8 +12,8 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('ブルスケッタプレート'), findsOneWidget);
-    expect(find.text('4.5'), findsOneWidget);
-    expect(find.text('128 件のレビュー'), findsOneWidget);
+    expect(find.text('4.7'), findsOneWidget);
+    expect(find.text('3 件のレビュー'), findsOneWidget);
     expect(find.text('¥2,500'), findsOneWidget);
     expect(find.text('在庫数: 5'), findsWidgets);
   });

@@ -9,8 +9,6 @@ final kTestProducts = [
     imageUrl: 'assets/products/bruschetta-plate.jpg',
     price: 2500,
     stockQuantity: 5,
-    reviewCount: 128,
-    averageRating: 4.5,
     reviews: [
       Review(
         reviewerId: 'user_001',
@@ -47,8 +45,20 @@ final kTestProducts = [
     imageUrl: 'assets/products/pasta-plate.jpg',
     price: 2800,
     stockQuantity: 5,
-    reviewCount: 203,
-    averageRating: 4.7,
+    reviews: [
+      Review(
+        reviewerId: 'user_004',
+        rating: 5,
+        comment: '深さがちょうどよく、ソースの多いパスタにも使いやすいです。',
+        createdAt: DateTime(2026, 5, 2),
+      ),
+      Review(
+        reviewerId: 'user_005',
+        rating: 4,
+        comment: '重すぎず普段使いしやすいので、出番が増えました。',
+        createdAt: DateTime(2026, 4, 12),
+      ),
+    ],
   ),
   Product(
     id: '4',
@@ -57,8 +67,6 @@ final kTestProducts = [
     imageUrl: 'assets/products/piggy-blue.jpg',
     price: 2000,
     stockQuantity: 5,
-    reviewCount: 56,
-    averageRating: 3.9,
   ),
   Product(
     id: '5',
@@ -67,8 +75,6 @@ final kTestProducts = [
     imageUrl: 'assets/products/piggy-green.jpg',
     price: 2000,
     stockQuantity: 10,
-    reviewCount: 89,
-    averageRating: 4.1,
   ),
   Product(
     id: '6',
@@ -77,8 +83,6 @@ final kTestProducts = [
     imageUrl: 'assets/products/piggy-pink.jpg',
     price: 2000,
     stockQuantity: 10,
-    reviewCount: 112,
-    averageRating: 4.4,
   ),
   Product(
     id: '7',
@@ -87,8 +91,20 @@ final kTestProducts = [
     imageUrl: 'assets/products/pizza-plate.jpg',
     price: 3200,
     stockQuantity: 10,
-    reviewCount: 167,
-    averageRating: 4.6,
+    reviews: [
+      Review(
+        reviewerId: 'user_006',
+        rating: 5,
+        comment: '大きめで取り分けしやすく、パーティーで好評でした。',
+        createdAt: DateTime(2026, 5, 1),
+      ),
+      Review(
+        reviewerId: 'user_007',
+        rating: 4,
+        comment: '絵柄が楽しく、テーブルの雰囲気が明るくなります。',
+        createdAt: DateTime(2026, 3, 29),
+      ),
+    ],
   ),
   Product(
     id: '8',
@@ -97,8 +113,6 @@ final kTestProducts = [
     imageUrl: 'assets/products/plate-and-bowl.jpg',
     price: 3800,
     stockQuantity: 10,
-    reviewCount: 45,
-    averageRating: 4.0,
   ),
   Product(
     id: '9',
@@ -107,8 +121,6 @@ final kTestProducts = [
     imageUrl: 'assets/products/salt-pepper-lemon.jpg',
     price: 880,
     stockQuantity: 10,
-    reviewCount: 31,
-    averageRating: 3.7,
   ),
   Product(
     id: '10',
@@ -117,8 +129,6 @@ final kTestProducts = [
     imageUrl: 'assets/products/salt-pepper-olives.jpg',
     price: 880,
     stockQuantity: 10,
-    reviewCount: 58,
-    averageRating: 4.3,
   ),
   Product(
     id: '11',
@@ -127,8 +137,20 @@ final kTestProducts = [
     imageUrl: 'assets/products/snacks-plate.jpg',
     price: 4500,
     stockQuantity: 10,
-    reviewCount: 95,
-    averageRating: 4.8,
+    reviews: [
+      Review(
+        reviewerId: 'user_008',
+        rating: 5,
+        comment: '少量のおつまみをきれいに並べられて、来客時に便利です。',
+        createdAt: DateTime(2026, 4, 28),
+      ),
+      Review(
+        reviewerId: 'user_009',
+        rating: 5,
+        comment: '釉薬の色味がきれいで、写真よりも存在感があります。',
+        createdAt: DateTime(2026, 4, 5),
+      ),
+    ],
   ),
   Product(
     id: '12',
@@ -137,8 +159,6 @@ final kTestProducts = [
     imageUrl: 'assets/products/flowers-plate.jpg',
     price: 4000,
     stockQuantity: 10,
-    reviewCount: 143,
-    averageRating: 4.6,
   ),
   Product(
     id: '13',
@@ -147,8 +167,6 @@ final kTestProducts = [
     imageUrl: 'assets/products/juicer-citrus-fruits.jpg',
     price: 2500,
     stockQuantity: 10,
-    reviewCount: 22,
-    averageRating: 3.5,
   ),
   Product(
     id: '14',
@@ -157,7 +175,19 @@ final kTestProducts = [
     imageUrl: 'assets/products/honey-pot.jpg',
     price: 2800,
     stockQuantity: 10,
-    reviewCount: 187,
-    averageRating: 4.9,
+    reviews: [
+      Review(
+        reviewerId: 'user_010',
+        rating: 5,
+        comment: 'ふたの収まりがよく、朝食のテーブルに置きやすいです。',
+        createdAt: DateTime(2026, 5, 4),
+      ),
+      Review(
+        reviewerId: 'user_011',
+        rating: 4,
+        comment: '見た目が上品で、ギフトにも選びやすい商品でした。',
+        createdAt: DateTime(2026, 4, 16),
+      ),
+    ],
   ),
 ];
