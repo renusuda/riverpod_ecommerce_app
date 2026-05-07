@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Review {
 
- String get reviewerId; int get rating; String get comment; DateTime get createdAt;
+ String get reviewerId; double get rating; String get comment; DateTime get createdAt;
 /// Create a copy of Review
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -45,7 +45,7 @@ abstract mixin class $ReviewCopyWith<$Res>  {
   factory $ReviewCopyWith(Review value, $Res Function(Review) _then) = _$ReviewCopyWithImpl;
 @useResult
 $Res call({
- String reviewerId, int rating, String comment, DateTime createdAt
+ String reviewerId, double rating, String comment, DateTime createdAt
 });
 
 
@@ -66,7 +66,7 @@ class _$ReviewCopyWithImpl<$Res>
   return _then(_self.copyWith(
 reviewerId: null == reviewerId ? _self.reviewerId : reviewerId // ignore: cast_nullable_to_non_nullable
 as String,rating: null == rating ? _self.rating : rating // ignore: cast_nullable_to_non_nullable
-as int,comment: null == comment ? _self.comment : comment // ignore: cast_nullable_to_non_nullable
+as double,comment: null == comment ? _self.comment : comment // ignore: cast_nullable_to_non_nullable
 as String,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
 as DateTime,
   ));
@@ -150,7 +150,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String reviewerId,  int rating,  String comment,  DateTime createdAt)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String reviewerId,  double rating,  String comment,  DateTime createdAt)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Review() when $default != null:
 return $default(_that.reviewerId,_that.rating,_that.comment,_that.createdAt);case _:
@@ -171,7 +171,7 @@ return $default(_that.reviewerId,_that.rating,_that.comment,_that.createdAt);cas
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String reviewerId,  int rating,  String comment,  DateTime createdAt)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String reviewerId,  double rating,  String comment,  DateTime createdAt)  $default,) {final _that = this;
 switch (_that) {
 case _Review():
 return $default(_that.reviewerId,_that.rating,_that.comment,_that.createdAt);}
@@ -188,7 +188,7 @@ return $default(_that.reviewerId,_that.rating,_that.comment,_that.createdAt);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String reviewerId,  int rating,  String comment,  DateTime createdAt)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String reviewerId,  double rating,  String comment,  DateTime createdAt)?  $default,) {final _that = this;
 switch (_that) {
 case _Review() when $default != null:
 return $default(_that.reviewerId,_that.rating,_that.comment,_that.createdAt);case _:
@@ -207,7 +207,7 @@ class _Review implements Review {
   
 
 @override final  String reviewerId;
-@override final  int rating;
+@override final  double rating;
 @override final  String comment;
 @override final  DateTime createdAt;
 
@@ -241,7 +241,7 @@ abstract mixin class _$ReviewCopyWith<$Res> implements $ReviewCopyWith<$Res> {
   factory _$ReviewCopyWith(_Review value, $Res Function(_Review) _then) = __$ReviewCopyWithImpl;
 @override @useResult
 $Res call({
- String reviewerId, int rating, String comment, DateTime createdAt
+ String reviewerId, double rating, String comment, DateTime createdAt
 });
 
 
@@ -262,7 +262,7 @@ class __$ReviewCopyWithImpl<$Res>
   return _then(_Review(
 reviewerId: null == reviewerId ? _self.reviewerId : reviewerId // ignore: cast_nullable_to_non_nullable
 as String,rating: null == rating ? _self.rating : rating // ignore: cast_nullable_to_non_nullable
-as int,comment: null == comment ? _self.comment : comment // ignore: cast_nullable_to_non_nullable
+as double,comment: null == comment ? _self.comment : comment // ignore: cast_nullable_to_non_nullable
 as String,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
 as DateTime,
   ));

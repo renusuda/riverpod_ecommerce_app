@@ -6,7 +6,7 @@ part 'review.freezed.dart';
 sealed class Review with _$Review {
   const factory Review({
     required String reviewerId,
-    required int rating,
+    required double rating,
     required String comment,
     required DateTime createdAt,
   }) = _Review;
