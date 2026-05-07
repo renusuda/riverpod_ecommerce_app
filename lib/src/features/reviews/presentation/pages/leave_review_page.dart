@@ -3,8 +3,9 @@ import 'package:ecommerce_app/src/features/reviews/presentation/widgets/leave_re
 import 'package:ecommerce_app/src/features/reviews/presentation/widgets/leave_review_submit_button.dart';
 import 'package:ecommerce_app/src/theme/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-class LeaveReviewPage extends StatelessWidget {
+class LeaveReviewPage extends HookWidget {
   const LeaveReviewPage({super.key, required this.productId});
 
   final String productId;
@@ -12,6 +13,7 @@ class LeaveReviewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final spacing = context.spacing;
+    final rating = useState<double>(0);
 
     return Scaffold(
       backgroundColor: const Color(0xFFFCF6FE),
@@ -26,11 +28,17 @@ class LeaveReviewPage extends StatelessWidget {
           padding: EdgeInsets.all(spacing.p16),
           child: Column(
             children: [
-              const LeaveReviewRatingSelector(),
+              LeaveReviewRatingSelector(
+                rating: rating.value,
+                onChanged: (value) => rating.value = value,
+              ),
               SizedBox(height: spacing.p32),
               const LeaveReviewInput(),
               SizedBox(height: spacing.p32),
-              const LeaveReviewSubmitButton(),
+              LeaveReviewSubmitButton(
+                disabled: rating.value == 0,
+                onPressed: () {},
+              ),
             ],
           ),
         ),
