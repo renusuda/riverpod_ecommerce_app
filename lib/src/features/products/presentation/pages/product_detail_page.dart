@@ -10,6 +10,7 @@ import 'package:ecommerce_app/src/features/products/presentation/widgets/cart_ic
 import 'package:ecommerce_app/src/features/products/presentation/providers/product_detail_provider.dart';
 import 'package:ecommerce_app/src/features/products/presentation/widgets/product_image.dart';
 import 'package:ecommerce_app/src/features/products/presentation/widgets/product_rating_bar.dart';
+import 'package:ecommerce_app/src/features/reviews/presentation/widgets/review_list.dart';
 import 'package:ecommerce_app/src/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -106,6 +107,7 @@ class _ProductDetailView extends HookConsumerWidget {
               ],
             ),
           ),
+          ReviewList(reviews: product.reviews),
         ],
       ),
     );

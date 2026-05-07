@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/src/features/reviews/domain/review.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'product.freezed.dart';
@@ -13,5 +14,6 @@ sealed class Product with _$Product {
     required int stockQuantity,
     @Default(0) int reviewCount,
     @Default(0.0) double averageRating,
+    @Default([]) List<Review> reviews,
   }) = _Product;
 }

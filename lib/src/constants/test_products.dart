@@ -1,6 +1,7 @@
 import 'package:ecommerce_app/src/features/products/domain/product.dart';
+import 'package:ecommerce_app/src/features/reviews/domain/review.dart';
 
-const kTestProducts = [
+final kTestProducts = [
   Product(
     id: '1',
     name: 'ブルスケッタプレート',
@@ -10,6 +11,26 @@ const kTestProducts = [
     stockQuantity: 5,
     reviewCount: 128,
     averageRating: 4.5,
+    reviews: [
+      Review(
+        reviewerId: 'user_001',
+        rating: 5,
+        comment: '色合いがきれいで、食卓が明るくなりました。',
+        createdAt: DateTime(2026, 5, 7),
+      ),
+      Review(
+        reviewerId: 'user_002',
+        rating: 4,
+        comment: '写真通りのデザインで、前菜を盛り付けるのにちょうど良いサイズです。',
+        createdAt: DateTime(2026, 4, 21),
+      ),
+      Review(
+        reviewerId: 'user_003',
+        rating: 5,
+        comment: '手描きの風合いがあり、来客用にも使いやすいです。',
+        createdAt: DateTime(2026, 3, 18),
+      ),
+    ],
   ),
   Product(
     id: '2',
