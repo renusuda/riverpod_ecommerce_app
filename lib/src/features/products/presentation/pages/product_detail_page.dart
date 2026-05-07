@@ -4,6 +4,8 @@ import 'package:ecommerce_app/src/common_widgets/primary_button.dart';
 import 'package:ecommerce_app/src/common_widgets/quantity_stepper.dart';
 import 'package:ecommerce_app/src/extensions/int_extensions.dart';
 import 'package:ecommerce_app/src/features/cart/presentation/providers/cart_provider.dart';
+import 'package:ecommerce_app/src/features/orders/domain/order_list_extension.dart';
+import 'package:ecommerce_app/src/features/orders/presentation/providers/orders_provider.dart';
 import 'package:ecommerce_app/src/features/products/domain/product.dart';
 import 'package:ecommerce_app/src/features/products/presentation/widgets/app_bar_menu_button.dart';
 import 'package:ecommerce_app/src/features/products/presentation/widgets/cart_icon_button.dart';
@@ -15,6 +17,7 @@ import 'package:ecommerce_app/src/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:intl/intl.dart';
 
 class ProductDetailPage extends ConsumerWidget {
   const ProductDetailPage({super.key, required this.productId});
@@ -51,6 +54,10 @@ class _ProductDetailView extends HookConsumerWidget {
     final quantity = useState(1);
     final spacing = context.spacing;
     final textTheme = Theme.of(context).textTheme;
+    final ordersAsyncValue = ref.watch(ordersProvider);
+    final purchasedOrder = ordersAsyncValue.whenOrNull(
+      data: (orders) => orders.latestOrderIncluding(product.id),
+    );
 
     return SingleChildScrollView(
       padding: EdgeInsets.all(spacing.p16),
@@ -83,6 +90,10 @@ class _ProductDetailView extends HookConsumerWidget {
                   style: textTheme.headlineMedium,
                 ),
                 const Divider(height: 32),
+                if (purchasedOrder != null) ...[
+                  _ReviewActionRow(orderDate: purchasedOrder.orderDate),
+                  const Divider(height: 32),
+                ],
                 Row(
                   children: [
                     Text('数量:', style: textTheme.bodyLarge),
@@ -110,6 +121,40 @@ class _ProductDetailView extends HookConsumerWidget {
           ReviewList(reviews: product.reviews),
         ],
       ),
+    );
+  }
+}
+
+class _ReviewActionRow extends StatelessWidget {
+  const _ReviewActionRow({required this.orderDate});
+
+  final DateTime orderDate;
+
+  @override
+  Widget build(BuildContext context) {
+    final spacing = context.spacing;
+    final textTheme = Theme.of(context).textTheme;
+    final orderDateText = DateFormat('yyyy年M月d日').format(orderDate);
+
+    return Row(
+      children: [
+        Expanded(
+          child: Text(
+            '$orderDateTextに購入',
+            style: textTheme.bodyLarge,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
+        SizedBox(width: spacing.p16),
+        TextButton(
+          onPressed: () {},
+          style: TextButton.styleFrom(
+            foregroundColor: Colors.green.shade700,
+            textStyle: textTheme.titleMedium,
+          ),
+          child: const Text('レビューを書く'),
+        ),
+      ],
     );
   }
 }
