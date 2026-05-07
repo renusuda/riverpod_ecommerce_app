@@ -2,7 +2,9 @@ import 'package:ecommerce_app/src/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class LeaveReviewInput extends StatelessWidget {
-  const LeaveReviewInput({super.key});
+  const LeaveReviewInput({super.key, required this.controller});
+
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -12,6 +14,7 @@ class LeaveReviewInput extends StatelessWidget {
     return SizedBox(
       height: 170,
       child: TextField(
+        controller: controller,
         maxLines: null,
         expands: true,
         textAlignVertical: TextAlignVertical.center,

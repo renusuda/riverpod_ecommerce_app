@@ -6,13 +6,20 @@ class LeaveReviewSubmitButton extends StatelessWidget {
     super.key,
     required this.onPressed,
     required this.disabled,
+    this.isLoading = false,
   });
 
   final VoidCallback? onPressed;
   final bool disabled;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
-    return PrimaryButton(label: '送信', disabled: disabled, onPressed: onPressed);
+    return PrimaryButton(
+      label: '送信',
+      disabled: disabled,
+      isLoading: isLoading,
+      onPressed: onPressed,
+    );
   }
 }
