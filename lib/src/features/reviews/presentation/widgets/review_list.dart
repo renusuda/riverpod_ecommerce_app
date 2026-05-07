@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/src/common_widgets/app_card.dart';
 import 'package:ecommerce_app/src/features/reviews/domain/review.dart';
+import 'package:ecommerce_app/src/features/reviews/presentation/widgets/review_star_icon.dart';
 import 'package:ecommerce_app/src/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -67,21 +68,16 @@ String _formatJapaneseDate(DateTime date) {
 class _ReviewStars extends StatelessWidget {
   const _ReviewStars({required this.rating});
 
-  final int rating;
+  final double rating;
 
   @override
   Widget build(BuildContext context) {
-    const color = Color(0xFFFFC107);
-
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: List.generate(
         5,
-        (index) => Icon(
-          index < rating ? Icons.star : Icons.star_border,
-          color: color,
-          size: 28,
-        ),
+        (index) =>
+            ReviewStarIcon(fillRatio: (rating - index).clamp(0, 1).toDouble()),
       ),
     );
   }
