@@ -7,6 +7,7 @@ import 'package:ecommerce_app/src/features/orders/presentation/pages/orders_page
 import 'package:ecommerce_app/src/features/payment/presentation/pages/payment_page.dart';
 import 'package:ecommerce_app/src/features/products/presentation/pages/product_detail_page.dart';
 import 'package:ecommerce_app/src/features/products/presentation/pages/product_list_page.dart';
+import 'package:ecommerce_app/src/features/reviews/presentation/pages/leave_review_page.dart';
 import 'package:ecommerce_app/src/routing/app_route.dart';
 import 'package:ecommerce_app/src/routing/go_router_refresh_stream.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,10 @@ GoRouter goRouter(Ref ref) {
           return '/';
         }
       } else {
-        if (path == '/account' || path == '/orders' || path == '/payment') {
+        if (path == '/account' ||
+            path == '/orders' ||
+            path == '/payment' ||
+            path.endsWith('/review')) {
           return '/sign-in';
         }
       }
@@ -49,6 +53,19 @@ GoRouter goRouter(Ref ref) {
               final productId = state.pathParameters['id']!;
               return ProductDetailPage(productId: productId);
             },
+            routes: [
+              GoRoute(
+                path: 'review',
+                name: AppRoute.leaveReview.name,
+                pageBuilder: (context, state) {
+                  final productId = state.pathParameters['id']!;
+                  return MaterialPage(
+                    fullscreenDialog: true,
+                    child: LeaveReviewPage(productId: productId),
+                  );
+                },
+              ),
+            ],
           ),
           GoRoute(
             path: 'cart',

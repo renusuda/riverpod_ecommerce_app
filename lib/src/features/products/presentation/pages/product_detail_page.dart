@@ -13,9 +13,11 @@ import 'package:ecommerce_app/src/features/products/presentation/providers/produ
 import 'package:ecommerce_app/src/features/products/presentation/widgets/product_image.dart';
 import 'package:ecommerce_app/src/features/products/presentation/widgets/product_rating_bar.dart';
 import 'package:ecommerce_app/src/features/reviews/presentation/widgets/review_list.dart';
+import 'package:ecommerce_app/src/routing/app_route.dart';
 import 'package:ecommerce_app/src/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
@@ -91,7 +93,10 @@ class _ProductDetailView extends HookConsumerWidget {
                 ),
                 const Divider(height: 32),
                 if (purchasedOrder != null) ...[
-                  _ReviewActionRow(orderDate: purchasedOrder.orderDate),
+                  _ReviewActionRow(
+                    productId: product.id,
+                    orderDate: purchasedOrder.orderDate,
+                  ),
                   const Divider(height: 32),
                 ],
                 Row(
@@ -126,8 +131,9 @@ class _ProductDetailView extends HookConsumerWidget {
 }
 
 class _ReviewActionRow extends StatelessWidget {
-  const _ReviewActionRow({required this.orderDate});
+  const _ReviewActionRow({required this.productId, required this.orderDate});
 
+  final String productId;
   final DateTime orderDate;
 
   @override
@@ -147,7 +153,10 @@ class _ReviewActionRow extends StatelessWidget {
         ),
         SizedBox(width: spacing.p16),
         TextButton(
-          onPressed: () {},
+          onPressed: () => context.goNamed(
+            AppRoute.leaveReview.name,
+            pathParameters: {'id': productId},
+          ),
           style: TextButton.styleFrom(
             foregroundColor: Colors.green.shade700,
             textStyle: textTheme.titleMedium,
